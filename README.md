@@ -3,4 +3,4 @@
 Integrantes:
 	-Augusto Fungo 
 	-Valeria Bettoni
-	-Santiago Alfonso
+	-Santiago Alfonso - 42.861.331
