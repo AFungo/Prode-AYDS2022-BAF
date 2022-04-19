@@ -48,7 +48,7 @@
     Las funcionalidades son registrar usuarios, los cuales pueden predecir los resultados de todos los partidos del mundial, siendo almacenadas en una base de datos para luego comparlalas con otros usuarios.
 
     2.3. Clases del usuarion y caracteristicas  
-## no tenemos bien en claro que debemos poner
+    <no tenemos bien en claro que debemos poner>
     El usuario podra registrarse/ingresar, realizar predicciones y ver su puntaje y el de otros usuarios.
 
     2.4. Plataforma de uso  
