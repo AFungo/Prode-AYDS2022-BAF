@@ -4,20 +4,20 @@
         **Prode Mundial De futbol Qatar 2022**  
         *Version 1.0*  
 
-*Desarrollado por:*  
-*Alfonso Santiago*  
-*Bettoni Valeria*  
-*Fungo Augusto*  
+*Desarrollado por:  
+   Alfonso Santiago  
+   Bettoni Valeria  
+   Fungo Augusto*
 
-        *7 de abril del 2021*
+*7 de abril del 2021*
 
 **Indice**  
-1. Introduccion  
+**1. Introduccion**  
     1.1.Proposito  
     1.2.Publico destinado  
     1.3.Objetivo  
     1.4.Referencias  
-2.Descripcion  
+**2. Descripcion**  
     2.1. Perspectiva del producto  
     2.2. Funciones del producto
     2.3. Clases del usuarion y caracteristicas
