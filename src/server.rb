@@ -16,6 +16,6 @@ class App < Sinatra::Application
   end
 
   get '/' do
-    'Hola mundo cruel!!!'
+    'Aguante boca!!!'
   end
 end
