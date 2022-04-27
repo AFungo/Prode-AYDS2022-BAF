@@ -72,13 +72,12 @@
 
 **3. Requerimientos**
    
-   **3.1. Funcionales**   
+   **3.1. Funcionales**  
+   
       3.1.1. Registrarse  
-         El usuario debe ingresar nombre, apellido, mail y una contraseña para poder crear su cuenta, tener en cuenta que no debe haber dos jugadores con los mismos datos
-      
+         El usuario debe ingresar nombre, apellido, mail y una contraseña para poder crear su cuenta, tener en cuenta que no debe haber dos jugadores con los mismos datos  
       3.1.2. Iniciar sesion  
          El usuario con su email o nombre y contraseña va a poder acceder a su cuenta. Tener en cuenta que solo tiene 5 oportunidades para poner mal su contraseña         
-      
       3.1.3. Cargar partido  
          El administrador va a poder cargar los partidos programados para la fase de grupos.  
       3.1.4. Realizar prediccion   
@@ -95,7 +94,8 @@
          Se puede acceder a una tabla con los usuarios con mayor puntuacion.
       3.1.10 Calcular los cruces de playsoff
          Una vez completada la fase de grupos se calcula automaticamente la llave de playoffs. 
-   3.2. No funcionales  
+   **3.2. No funcionales**  
+   
       3.2.1. No puede haber dos partidos iguales en la misma instancia.
           Duda
          
