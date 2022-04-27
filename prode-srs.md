@@ -90,8 +90,17 @@
       3.1.7. Cargar Resultado  
          El administrador cargara la cantidad de goles de cada equipo de los partidos programados 
       3.1.8. Cargar equipo  
+         El administrador va a poder cargar el equipo con su nombre y su bandera.
       3.1.9. Mostrar posiciones
+         Se puede acceder a una tabla con los usuarios con mayor puntuacion.
+      3.1.10 Calcular los cruces de playsoff
+         Una vez completada la fase de grupos se calcula automaticamente la llave de playoffs. 
    3.2. No funcionales  
-      3.2.1. No puede haber dos partidos iguales en la misma instancia  
-      3.2.2 Solo se puede realizar una prediccion por partido  
+      3.2.1. No puede haber dos partidos iguales en la misma instancia.
+         -- Duda
+         
+      3.2.2 Solo se puede realizar una prediccion por partido.
+         Siempre se debe cumplir que los usuarios hagan solo una prediccion por partido.
+         
+         
  
