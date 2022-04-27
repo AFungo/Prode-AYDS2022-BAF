@@ -97,7 +97,7 @@
          Una vez completada la fase de grupos se calcula automaticamente la llave de playoffs. 
    3.2. No funcionales  
       3.2.1. No puede haber dos partidos iguales en la misma instancia.
-         -- Duda
+          Duda
          
       3.2.2 Solo se puede realizar una prediccion por partido.
          Siempre se debe cumplir que los usuarios hagan solo una prediccion por partido.
