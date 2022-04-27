@@ -23,7 +23,7 @@
     2.3. Clases del usuarion y caracteristicas
     2.4. Plataforma de uso  
 **3. Requerimientos**
-   3.1. Funcionales
+   3.1. Funcionales  
       3.1.1. Registrarse  
       3.1.2. Iniciar sesion  
       3.1.3. Cargar partido  
