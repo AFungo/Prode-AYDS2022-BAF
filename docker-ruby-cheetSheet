@@ -1,0 +1,16 @@
+///Cheat Sheet\\\
+
+Docker ::
+
+	$ sudo docker-compose build //compila la configuracion del docker hay que hacerlo cada vez que se modifica algo
+	$ sudo docker-compose up // levanta el contenerdor de docker
+
+Data Base ::
+
+	$ sudo docker-compose exec app bundle exec rake db:create	
+	
+Migraciones :: 
+
+	$ sudo docker-compose exec app bundle exec rake db:create_migration NAME=create_teams
+
+
