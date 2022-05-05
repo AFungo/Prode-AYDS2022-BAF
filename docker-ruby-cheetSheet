@@ -13,4 +13,46 @@ Migraciones ::
 
 	$ sudo docker-compose exec app bundle exec rake db:create_migration NAME=create_teams
 
+	$ sudo docker-compose exec app bundle exec rake db:migrate // EJECUTA LA MIGRACION
+	
+	$ sudo docker-compose exec app bundle exec rake db:rollback //deshace lo ultimo que se hizo 
+
+
+
+utils ::
+
+	$ sudo docker-compose exec app bundle exec irb -I. -r server.rb // hace interprete con nuesto server
+
+
+notas 
+
+hacer un archivo donde tengamos todos los require
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
