@@ -5,4 +5,3 @@ namespace :db do
     require "./server"
   end
 end
-

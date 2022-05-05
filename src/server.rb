@@ -1,9 +1,11 @@
+require_relative 'models/football_team'
 require 'bundler/setup'
 require 'sinatra/base'
 
 require 'sinatra/reloader' if Sinatra::Base.environment == :development  
 
 require "sinatra/activerecord"
+
 
 class App < Sinatra::Application
   configure :development do
@@ -21,3 +23,10 @@ class App < Sinatra::Application
     'Aguante boca!!!'
   end
 end
+
+
+
+
+
+
+
