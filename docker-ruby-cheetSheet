@@ -7,11 +7,11 @@ Docker ::
 
 Data Base ::
 
-	$ sudo docker-compose exec app bundle exec rake db:create	
+	$ sudo docker-compose exec app bundle exec rake db:create //Crear la base de datos	
 	
 Migraciones :: 
 
-	$ sudo docker-compose exec app bundle exec rake db:create_migration NAME=create_teams
+	$ sudo docker-compose exec app bundle exec rake db:create_migration NAME=create_teams //crear una migracion
 
 	$ sudo docker-compose exec app bundle exec rake db:migrate // EJECUTA LA MIGRACION
 	
@@ -24,9 +24,9 @@ utils ::
 	$ sudo docker-compose exec app bundle exec irb -I. -r server.rb // hace interprete con nuesto server
 
 
-notas 
+notas ::
 
-hacer un archivo donde tengamos todos los require
+	hacer un archivo donde tengamos todos los require el server.rb, en vez de llamar a cada clase que creemos por separdo
 
 
 
