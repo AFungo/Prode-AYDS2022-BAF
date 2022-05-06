@@ -1,8 +1,3 @@
-class Point < ActiveRecord::Migration[7.0]
+class Point < ActiveRecord::Base
 
-    def change 
-        create_table :points do |t|
-            t.integer :total_points
-        end
-    end
 end

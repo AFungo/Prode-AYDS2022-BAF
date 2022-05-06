@@ -1,4 +1,8 @@
 require_relative 'models/Team'
+require_relative 'models/Match'
+require_relative 'models/Point'
+
+
 require 'bundler/setup'
 require 'sinatra/base'
 
