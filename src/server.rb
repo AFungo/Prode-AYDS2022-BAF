@@ -1,4 +1,4 @@
-require_relative 'models/football_team'
+require_relative 'models/Team'
 require 'bundler/setup'
 require 'sinatra/base'
 
@@ -19,8 +19,10 @@ class App < Sinatra::Application
     super()
   end
 
+  team = Team.create(name: "Nigeria")
+
   get '/' do
-    'Aguante boca!!!'
+    'Aguante boca!!!' + team.name
   end
 end
 
