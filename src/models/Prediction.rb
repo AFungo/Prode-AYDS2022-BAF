@@ -1,12 +1,6 @@
+ require 'active_record'
 
-
-class Prediction < ApplicationRecord
-	
-	def initialize(Team1_goals,Team2_goals)
-		@Team1_goals = Team1_goals
-		@Team2_goals = Team2_goals
-	end
-	has_one = Result
+class Prediction < ActiveRecord::Base
 end
 
 
