@@ -1,6 +1,6 @@
-class CreatePrediction < ActiveRecord::Migration[7.0]
+class AddPrediction < ActiveRecord::Migration[7.0]
   def change
-    create_table :users do |t|
+    create_table :predictions do |t|
       t.references :match
 
       t.integer :Team1_goals
