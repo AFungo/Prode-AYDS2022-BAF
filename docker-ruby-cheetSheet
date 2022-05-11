@@ -18,7 +18,6 @@ Migraciones ::
 	$ sudo docker-compose exec app bundle exec rake db:rollback //deshace lo ultimo que se hizo 
 
 
-
 utils ::
 
 	$ sudo docker-compose exec app bundle exec irb -I. -r server.rb // hace interprete con nuesto server
@@ -29,6 +28,8 @@ notas ::
 	hacer un archivo donde tengamos todos los require el server.rb, en vez de llamar a cada clase que creemos por separdo
 
 
+test :: 
+	sudo docker-compose exec app bundle exec rspec
 
 
 
