@@ -4,10 +4,6 @@ class CreateTeams < ActiveRecord::Migration[7.0]
       t.string :name
       
       t.timestamps
-    end
+    end    
   end
 end
-
-#t.references :local fk
-#t.rederences :visitor fk
-# belongs_to :local , class_name : 'Team'
