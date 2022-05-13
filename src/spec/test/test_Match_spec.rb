@@ -8,8 +8,7 @@ describe 'Match' do
                 t1 = Team.create(name: 'nigeria')
                 t2 = Team.create(name: 'argentina')
                 m = Match.create(local: t1, visitor: t2)
-                valid = match.valid
-                expect(valid).to eq(true)
+                expect(m.check_prop).to eq(true)
             end
         end
     end
