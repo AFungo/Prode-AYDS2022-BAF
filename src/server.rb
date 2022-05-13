@@ -21,7 +21,7 @@ class App < Sinatra::Application
     super()
   end
 
-  team = Team.create(name: "Nigeria")
+#  team = Team.create(name: "Nigeria")
 
   get '/' do
     'Aguante boca!!!' + team.name
