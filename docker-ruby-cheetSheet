@@ -29,8 +29,12 @@ notas ::
 
 
 test :: 
-	sudo docker-compose exec app bundle exec rake db:drop;create;migrate APP_ENV=test //crear las migraciones en la base de datos de los test	
-	sudo docker-compose exec app bundle exec rspec
+	//crear las migraciones en la base de datos
+	sudo docker-compose exec app bundle exec rake db:drop APP_ENV=test 	
+	sudo docker-compose exec app bundle exec rake db:create APP_ENV=test
+	sudo docker-compose exec app bundle exec rake db:migrate APP_ENV=test
+	
+	sudo docker-compose exec app bundle exec rspec //CORRER LOS TEST
 
 
 
