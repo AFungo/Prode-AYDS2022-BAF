@@ -6,7 +6,7 @@ class Prediction < ActiveRecord::Base
 
 	def changeScore
 		r = results.get(match)
-		p = prediction.get(match)
+		p = self
 		Point.new(prediction: prediction, result: r)
 		Gambler.Total_score + Point.calculatePoints
 	end

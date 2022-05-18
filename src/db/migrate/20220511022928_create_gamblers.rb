@@ -5,7 +5,7 @@ class CreateGamblers < ActiveRecord::Migration[7.0]
         t.string :lastname
         t.string :Email
         t.integer :Total_score
-        t.references :predictions, index: true, foreign_key: { to_table: :Predictions }
+        t.references :predictions
  
         t.timestamps
     end

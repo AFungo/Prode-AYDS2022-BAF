@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_11_214418) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_18_201607) do
   create_table "gamblers", force: :cascade do |t|
     t.string "name"
     t.string "lastname"
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_11_214418) do
     t.integer "predictions_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest", default: "", null: false
     t.index ["predictions_id"], name: "index_gamblers_on_predictions_id"
   end
 
@@ -35,18 +36,35 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_11_214418) do
   end
 
   create_table "points", force: :cascade do |t|
+    t.integer "prediction_id"
+    t.integer "result_id"
     t.integer "total_points"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["prediction_id"], name: "index_points_on_prediction_id"
+    t.index ["result_id"], name: "index_points_on_result_id"
   end
 
   create_table "predictions", force: :cascade do |t|
+    t.integer "gambler_id"
     t.integer "match_id"
     t.integer "team1_goals"
     t.integer "team2_goals"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["gambler_id"], name: "index_predictions_on_gambler_id"
     t.index ["match_id"], name: "index_predictions_on_match_id"
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.integer "match_id"
+    t.integer "prediction_id"
+    t.integer "team1_goals"
+    t.integer "team2_goals"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_results_on_match_id"
+    t.index ["prediction_id"], name: "index_results_on_prediction_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -55,5 +73,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_11_214418) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "gamblers", "Predictions", column: "predictions_id"
 end
