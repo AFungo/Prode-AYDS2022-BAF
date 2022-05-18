@@ -25,20 +25,21 @@ class App < Sinatra::Application
   end
 
 
-  team = Team.new
-    team.name = "Argentina"
-    team2 = Team.new
-    team2.name = "Nigeria"
-    m1 = Match.new
-    m1.local = team
-    m1.visitor = team2 
+    
+    if !(Team.find_by(name: "Argentina") && Team.find_by(name:"Nigeria"))
+      team = Team.new
 
-    g1 = Gambler.new
-    g1.name = "Jorge"
-    g1.lastname = "George"
-    team.save
-    team2.save
-  
+      team.name = "Argentina"
+      team2 = Team.new
+      team2.name = "Nigeria"
+      m1 = Match.new
+      m1.local = team
+      m1.visitor = team2 
+      team.save
+      team2.save
+
+    end
+     
   get '/' do
     @equipos = Team.all
     erb :index
@@ -58,8 +59,6 @@ class App < Sinatra::Application
       redirect to "/login"
     end
   end
-
-
 end
 
 
