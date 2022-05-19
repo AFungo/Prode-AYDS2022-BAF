@@ -1,5 +1,3 @@
-
-
 require 'bundler/setup'
 require 'sinatra/base'
 
@@ -7,9 +5,14 @@ require 'sinatra/reloader' if Sinatra::Base.environment == :development
 
 require "sinatra/activerecord"
 
+require 'logger'
+
 require_relative 'models/init'
 
 class App < Sinatra::Application
+
+  
+  
   configure :development do
     set :sessions, true
     set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
@@ -18,6 +21,12 @@ class App < Sinatra::Application
     after_reload do
       puts 'Reloaded...'
     end
+    enable :logging
+  
+    logger = Logger.new(STDOUT)
+    logger.level = Logger::DEBUG if development?
+    set :logger, logger
+
   end
 
   def initialize(app = nil)
@@ -39,7 +48,6 @@ class App < Sinatra::Application
       team2.save
 
     end
-     
   get '/' do
     @equipos = Team.all
     erb :index
@@ -50,8 +58,11 @@ class App < Sinatra::Application
   end
 
   post '/login' do
-    json = JSON.parse(request.body.read.to_json)
-    user = Gambler.find_by(name: json['name'])
+    json = request.params 
+    logger.info json
+    user = Gambler.find_by(name: json['username'])
+    logger.info 'string'
+    logger.info user.inspect
     if user && user.password == json['password']
       session[:user_id] = user.id
       redirect to "/"
@@ -60,10 +71,3 @@ class App < Sinatra::Application
     end
   end
 end
-
-
-
-
-
-
-
