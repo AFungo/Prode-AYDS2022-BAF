@@ -11,8 +11,17 @@ require_relative 'models/init'
 
 class App < Sinatra::Application
 
-  
-  
+  before do
+    if session[:gambler_id]
+      @current_user = Gambler.find_by(id: session[:user_id])
+    else
+      public_pages = ["/", "/login",'/signup']
+      if !public_pages.include?(request.path_info)
+        redirect '/login'
+      end
+    end
+  end
+    
   configure :development do
     set :sessions, true
     set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
@@ -48,6 +57,8 @@ class App < Sinatra::Application
       team2.save
 
     end
+  
+
   get '/' do
     @equipos = Team.all
     erb :index
@@ -70,4 +81,25 @@ class App < Sinatra::Application
       redirect to "/login"
     end
   end
+
+  get '/signup' do
+    erb :signup
+  end
+
+  post '/signup' do
+    g1 = Gambler.new
+    json = request.params
+    if json['password'] == json['repeatpassword']
+       g1 = Gambler.new
+       g1.name = json['username']
+       g1.lastname = json['lastname']
+       g1.password=(json['password'])
+       g1.Email = json['email']
+       g1.Total_score = 0
+       g1.save
+       redirect to "/login"
+    end
+    redirect to "/signup"
+  end
+
 end
