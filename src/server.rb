@@ -73,7 +73,7 @@ class App < Sinatra::Application
     logger.info user.inspect
     if user && user.password == json['password']
       session[:gambler_id] = user.id
-      redirect to "/"
+      redirect to "/matches"
     else
       redirect to "/login"
     end
