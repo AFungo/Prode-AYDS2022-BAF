@@ -46,6 +46,14 @@ crear datos db:
 	match = Match.create(local_id: 1, visitor_id: 2, round: 1, datetime: date)
 	match.save
 
+	team1 = Team.create(name: 'Italia')
+	team2 = Team.create(name: 'Irak')
+	date = DateTime.new(2022,12,8,15,50) 
+	team1.save
+	team2.save
+	match = Match.create(local_id: 3, visitor_id: 4, round: 4, datetime: date)
+	match.save
+
 	// date == año-mes-dia-hora-minutos
 
 
