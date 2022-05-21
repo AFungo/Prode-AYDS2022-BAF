@@ -11,6 +11,8 @@ class Match < ActiveRecord::Base
         local!=visitor
     end
 
+    #Dice si dos partidos son iguales. 
+    #Dos partidos son iguales si juegan los mismo equipos en la misma ronda
     def equals(other)
         ((other.local == self.local || other.local == self.visitor) && (other.visitor == self.visitor || other.visitor == self.local) && (other.round == self.round) )
     end
