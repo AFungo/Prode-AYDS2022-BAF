@@ -10,5 +10,10 @@ class Match < ActiveRecord::Base
     def check_prop
         local!=visitor
     end
+
+    def equals(other)
+        ((other.local == self.local || other.local == self.visitor) && (other.visitor == self.visitor || other.visitor == self.local) && (other.round == self.round) )
+    end
+
     
 end

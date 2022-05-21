@@ -1,0 +1,19 @@
+<h1>Add Prediction</h1>
+  <% if @error %>
+      <div class="error">Prediction failed.</div>
+  <% end %>
+  <form action="/addPrediction" method="post" >
+      <input list = "allteams" type="text" name="team1" placeholder="Team 1" />
+      <input list="allteams" type="text" name="team2" placeholder="Team 2" />
+      <input type="number" name="team1_goals" placeholder="Team1 goals" />
+      <input type="number" name="team2_goals" placeholder="Team2 goals" />      
+      <input type="submit" name="button" value="Add prediction" />
+    
+    <datalist id="allteams">
+      <% @equipos.each do |p| %>
+         <option value= <%= p.name %> >
+      <% end %>
+    </datalist>
+
+
+  </form>

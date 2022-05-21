@@ -49,7 +49,12 @@ class App < Sinatra::Application
   end
 
   get '/prueba' do
-    erb :prueba
+       g1 = @current_user
+       if g1.prediction.size == 4
+        "boca"
+       else
+        g1.prediction.first.match
+       end
   end
 
 
@@ -107,4 +112,29 @@ class App < Sinatra::Application
     redirect to "/"
   end
 
+  get '/addPrediction' do
+    @equipos = Team.all
+    erb :addPrediction
+  end
+
+  post '/addPrediction' do
+    g1 = @current_user
+    json = request.params
+    p1 = Prediction.new
+    m1 = Match.new
+    t1= Team.new
+    t2 = Team.new
+    t1.name = json['team1']
+    t2.name = json['team2']
+    m1.local = t1
+    m1.visitor = t2
+    p1.match = m1
+    p1.gambler = g1
+    p1.team1_goals = json['team1_goals']
+    p1.team2_goals = json['team2_goals']
+    g1.prediction << p1
+    p1.save
+    g1.save
+    redirect to "/matches"
+  end
 end
