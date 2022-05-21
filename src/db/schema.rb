@@ -26,9 +26,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_201607) do
   create_table "matches", force: :cascade do |t|
     t.integer "local_id"
     t.integer "visitor_id"
-    t.string "date"
-    t.string "hour"
-    t.string "round"
+    t.datetime "datetime"
+    t.integer "round"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["local_id"], name: "index_matches_on_local_id"
