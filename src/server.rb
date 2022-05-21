@@ -13,7 +13,7 @@ class App < Sinatra::Application
 
   before do
     if session[:gambler_id]
-      @current_user = Gambler.find_by(id: session[:user_id])
+      @current_user = Gambler.find_by(id: session[:gambler_id])
     else
       public_pages = ["/", "/login",'/signup']
       if !public_pages.include?(request.path_info)
@@ -58,6 +58,10 @@ class App < Sinatra::Application
 
     end
   
+  get '/prueba' do
+    erb :prueba
+  end
+
 
   get '/' do
     @equipos = Team.all
@@ -65,6 +69,9 @@ class App < Sinatra::Application
   end
 
   get '/login' do
+    if !!session[:gambler_id]
+      redirect "/"
+    end
     erb :login
   end
 
@@ -75,7 +82,7 @@ class App < Sinatra::Application
     logger.info 'string'
     logger.info user.inspect
     if user && user.password == json['password']
-      session[:user_id] = user.id
+      session[:gambler_id] = user.id
       redirect to "/"
     else
       redirect to "/login"
@@ -83,6 +90,9 @@ class App < Sinatra::Application
   end
 
   get '/signup' do
+     if !!session[:gambler_id]
+      redirect "/"
+    end
     erb :signup
   end
 
@@ -100,6 +110,11 @@ class App < Sinatra::Application
        redirect to "/login"
     end
     redirect to "/signup"
+  end
+
+  get '/logout' do
+    session.clear
+    redirect to "/"
   end
 
 end
