@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Matches</title>
+  </head>
+  <body>
+    <h1>Partidos</h1>
+    <% @partidos.each do |p| %>
+        <%= Team.find_by(id: p.local_id).name %>
+        <%= 'vs' %> 
+        <%= Team.find_by(id: p.visitor_id).name %>
+        <%= 'Fecha: '%>
+        <%= p.datetime%>
+        <%= 'Ronda: '%>
+        <%= p.round%>
+        </br>
+    <% end %>
+  </body>
+</html>

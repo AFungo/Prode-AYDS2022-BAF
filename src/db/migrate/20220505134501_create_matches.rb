@@ -6,7 +6,7 @@ class CreateMatches < ActiveRecord::Migration[7.0]
       t.integer :local_id, index: true, foreign_key: { to_table: :teams }
       t.integer :visitor_id, index: true, foreign_key: { to_table: :teams }
       t.datetime :datetime
-      t.integer :round
+      t.column :round, :integer
       t.timestamps
     end
   end
