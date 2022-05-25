@@ -135,6 +135,8 @@ class App < Sinatra::Application
     g1.prediction << p1
     p1.save
     g1.save
-    redirect to "/matches"
+  get '/score' do
+    @gamblers = Gambler.order(Total_score: :desc)
+    erb :score
   end
 end

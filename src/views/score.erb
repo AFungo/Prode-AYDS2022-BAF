@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ranking</title>
+  </head>
+  <body>
+    <h1>Posciciones apostadores</h1>
+    <% i = 1 %>
+    <% @gamblers.each do |p| %>
+        <%= i %>
+        <%= p.name %>
+        <%= p.lastname %> 
+        <%= p.Total_score %>
+        <% i = i+1 %>
+        </br>
+    <% end %>
+  </body>
+</html>
