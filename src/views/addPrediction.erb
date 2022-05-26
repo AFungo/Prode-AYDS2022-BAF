@@ -3,17 +3,17 @@
       <div class="error">Prediction failed.</div>
   <% end %>
   <form action="/addPrediction" method="post" >
-      <input list = "allteams" type="text" name="team1" placeholder="Team 1" />
-      <input list="allteams" type="text" name="team2" placeholder="Team 2" />
-      <input type="number" name="team1_goals" placeholder="Team1 goals" />
-      <input type="number" name="team2_goals" placeholder="Team2 goals" />      
-      <input type="submit" name="button" value="Add prediction" />
-    
-    <datalist id="allteams">
-      <% @equipos.each do |p| %>
-         <option value= <%= p.name %> >
-      <% end %>
-    </datalist>
-
-
-  </form>
+    <% @partidos.each do |p| %>
+      <input type="hidden" id="p_id" name="p[][id]" value=<%= p.id%> />
+      <%= Team.find_by(id: p.local_id).name%>
+      <input type="number" name="p[][team1_goals]" placeholder="Team1 goals" />
+      <%= ' vs ' %> 
+      <%= Team.find_by(id: p.visitor_id).name %>
+      <input type="number" name="p[][team2_goals]" placeholder="Team2 goals" />
+      <%@match = p.id%> 
+      </br>
+      </br>      
+    <%end%>
+    </br>
+    <input type="submit" name="button" value="Add prediction" />
+  </form> 

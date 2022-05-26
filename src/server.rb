@@ -113,28 +113,23 @@ class App < Sinatra::Application
   end
 
   get '/addPrediction' do
-    @equipos = Team.all
+    @partidos = Match.all
     erb :addPrediction
   end
 
   post '/addPrediction' do
-    g1 = @current_user
+    gambler = @current_user
     json = request.params
-    p1 = Prediction.new
-    m1 = Match.new
-    t1= Team.new
-    t2 = Team.new
-    t1.name = json['team1']
-    t2.name = json['team2']
-    m1.local = t1
-    m1.visitor = t2
-    p1.match = m1
-    p1.gambler = g1
-    p1.team1_goals = json['team1_goals']
-    p1.team2_goals = json['team2_goals']
-    g1.prediction << p1
-    p1.save
-    g1.save
+    for index in 0..json.size do
+      logger.info json['p'][index]['id']
+      prediction = Prediction.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'], team2_goals: json['p'][index]['team2_goals'])
+      gambler.prediction << prediction
+      prediction.save
+      gambler.save  
+    end
+    redirect to "/score"
+  end
+
   get '/score' do
     @gamblers = Gambler.order(Total_score: :desc)
     erb :score
