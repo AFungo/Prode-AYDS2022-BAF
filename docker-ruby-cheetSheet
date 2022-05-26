@@ -57,7 +57,15 @@ crear datos db:
 	// date == año-mes-dia-hora-minutos
 
 
-
+	g = Gambler.create(name: 'carlo', lastname: 'carlito', Email: 'asc@gmailcom', Total_score: 10)
+	g.password=('abc')
+	g.save	
+	g = Gambler.create(name: 'SoyUna', lastname: 'Prueba', Email: 'pru@gmailcom', Total_score: 3)
+	g.password=('abc')
+	g.save
+	g = Gambler.create(name: 'George', lastname: 'jorge', Email: 'gj@gmailcom', Total_score: 7)
+	g.password=('abc')
+	g.save
 
 
 
