@@ -5,23 +5,30 @@
   </head>
   <body>
     <h1>Esto no es un pagina ilegal de apuestas</h1>
+    <% if !session[:gambler_id] %>
     <form>
       <a href="http://localhost:4567/login">
       <input type="button" value="Login">
       </a>
     </form>
+    <% end %>
     </br>
+    <% if !session[:gambler_id] %>
     <form>
       <a href="http://localhost:4567/signup">
       <input type="button" value="Sign up">
       </a>
     </form>
+      <% end %>
     </br>
+    <% if session[:gambler_id] %>
     <form>
       <a href="http://localhost:4567/logout">
       <input type="button" value="Logout">
       </a>
     </form>
-
+    <% end  %>
+    </br>
+  
   </body>
 </html>

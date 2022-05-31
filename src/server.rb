@@ -49,17 +49,12 @@ class App < Sinatra::Application
   end
 
   get '/prueba' do
-       g1 = @current_user
-       if g1.prediction.size == 4
-        "boca"
-       else
-        g1.prediction.first.match
-       end
+    "Aguante boca"
   end
 
 
   get '/' do
-    @equipos = Team.all
+    @log = !!session[:gambler_id]
     erb :index
   end
 

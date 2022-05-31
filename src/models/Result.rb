@@ -21,10 +21,12 @@ class Result < ActiveRecord::Base
 	end
 
     def change_score
-        pred = Prediction.find_by match: self.match
+        pred = Prediction.where(match: self.match)
         pred.each do |p|
-            points = self.calculatePoints(p.match)
-            p.gambler.Total_score = p.gambler.Total_score + points
+            points = self.calculatePoints(p)
+            g1 = p.gambler
+            g1.Total_score = g1.Total_score + points
+            g1.save
         end
        
     end
