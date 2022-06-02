@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_201607) do
     t.string "name"
     t.string "lastname"
     t.string "Email"
-    t.integer "Total_score"
+    t.integer "Total_score", default: 0
     t.integer "predictions_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,6 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_201607) do
     t.integer "team2_goals"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index "\"gambler\", \"match\"", name: "index_predictions_on_gambler_and_match"
     t.index ["gambler_id"], name: "index_predictions_on_gambler_id"
     t.index ["match_id"], name: "index_predictions_on_match_id"
   end

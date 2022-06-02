@@ -4,7 +4,7 @@ class CreateGamblers < ActiveRecord::Migration[7.0]
         t.string :name
         t.string :lastname
         t.string :Email
-        t.integer :Total_score
+        t.integer :Total_score, default: 0
         t.references :predictions
  
         t.timestamps
