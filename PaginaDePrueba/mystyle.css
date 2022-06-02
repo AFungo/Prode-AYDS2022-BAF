@@ -1,0 +1,154 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+@import url(https://fonts.googleapis.com/css2?family=Mulish:wght@500&display=swap);
+
+body {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%2314430e' points='800 100 0 200 0 800 1600 800 1600 200'/%3E%3Cpolygon fill='%231e5315' points='800 200 0 400 0 800 1600 800 1600 400'/%3E%3Cpolygon fill='%232a611e' points='800 300 0 600 0 800 1600 800 1600 600'/%3E%3Cpolygon fill='%23386d29' points='1600 800 800 400 0 800'/%3E%3Cpolygon fill='%23467835' points='1280 800 800 500 320 800'/%3E%3Cpolygon fill='%23558143' points='533.3 800 1066.7 800 800 600'/%3E%3Cpolygon fill='%23648952' points='684.1 800 914.3 800 800 700'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: repeat-y;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.presentation {
+    background-color: #091a08;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%2314430e' points='800 100 0 200 0 800 1600 800 1600 200'/%3E%3Cpolygon fill='%231e5315' points='800 200 0 400 0 800 1600 800 1600 400'/%3E%3Cpolygon fill='%232a611e' points='800 300 0 600 0 800 1600 800 1600 600'/%3E%3Cpolygon fill='%23386d29' points='1600 800 800 400 0 800'/%3E%3Cpolygon fill='%23467835' points='1280 800 800 500 320 800'/%3E%3Cpolygon fill='%23558143' points='533.3 800 1066.7 800 800 600'/%3E%3Cpolygon fill='%23648952' points='684.1 800 914.3 800 800 700'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: repeat-y;
+    font-family: 'Mulish';
+    color: #fff;
+    padding-left: 80px;
+    padding-top: 40px;
+    display:flex;
+    
+
+}
+.row{
+    background-color: #091a08;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%2314430e' points='800 100 0 200 0 800 1600 800 1600 200'/%3E%3Cpolygon fill='%231e5315' points='800 200 0 400 0 800 1600 800 1600 400'/%3E%3Cpolygon fill='%232a611e' points='800 300 0 600 0 800 1600 800 1600 600'/%3E%3Cpolygon fill='%23386d29' points='1600 800 800 400 0 800'/%3E%3Cpolygon fill='%23467835' points='1280 800 800 500 320 800'/%3E%3Cpolygon fill='%23558143' points='533.3 800 1066.7 800 800 600'/%3E%3Cpolygon fill='%23648952' points='684.1 800 914.3 800 800 700'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: repeat-y;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.welcome {
+  background: #3bd387;
+  border: 0px;
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.login,
+.signin {
+  width: 400px;
+  margin: 16px auto;
+  font-size: 16px;
+}
+
+/* Reset top and bottom margins from certain elements */
+.login-header,
+.login p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.signin-header,
+.signin p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* The triangle form is achieved by a CSS hack */
+.login-triangle,
+.signin-triangle {
+  width: 0;
+  margin-top: auto;
+  margin-right: auto;
+  margin-left: auto;
+  border: 12px solid transparent;
+  border-bottom-color: #3bd387;
+}
+
+.login-header,
+.signin-header {
+  background: #3bd387;
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.login-container, 
+.signin-container {
+  background: #ebebeb;
+  padding: 12px;
+}
+
+/* Every row inside .login-container is defined with p tags */
+.login p,
+.signin p {
+  padding: 12px;
+}
+
+
+.login input, 
+.signin input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+}
+
+.login input[type="email"],
+.login input[type="password"]
+.sign input[type="name"],
+.sign input[type="lastname"],
+.sign input[type="email"],
+.sign input[type="password"]
+{
+  background: #fff;
+  border-color: #bbb;
+  color: #555;
+}
+
+/* Text fields' focus effect */
+.login input[type="email"]:focus,
+.login input[type="password"]:focus,
+.signin input[type="name"]:focus,
+.signin input[type="lastname"]:focus,
+.signin input[type="email"]:focus,
+.signin input[type="password"]:focus {
+  border-color: #3c4634;
+}
+
+.login input[type="submit"], 
+.signin input[type="submit"] {
+  background: #3bd387;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.login input[type="submit"]:hover,
+.signin input[type="submit"]:hover{
+  background: #02723a;
+}
+
+/* Buttons' focus effect */
+.login input[type="submit"]:focus,
+.signin input[type="submit"]:focus {
+  border-color: #02723a;
+}
+
