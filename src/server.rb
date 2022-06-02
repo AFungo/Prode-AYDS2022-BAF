@@ -25,6 +25,7 @@ class App < Sinatra::Application
     set :sessions, true
     set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
     set :views          , File.expand_path('../views', __FILE__)
+    set :public_folder, 'public'
     register Sinatra::Reloader
     after_reload do
       puts 'Reloaded...'
@@ -62,7 +63,7 @@ class App < Sinatra::Application
     if !!session[:gambler_id]
       redirect "/"
     end
-    erb :login
+    erb :login, :layout => :layout
   end
 
   post '/login' do
