@@ -57,19 +57,22 @@ crear datos db:
 	// date == año-mes-dia-hora-minutos
 
 
-	g = Gambler.create(name: 'carlo', lastname: 'carlito', Email: 'asc@gmailcom', Total_score: 10)
+	g = Gambler.create(name: 'carlo', lastname: 'carlito', Email: 'asc@gmailcom')
 	g.password=('abc')
 	g.save	
-	g = Gambler.create(name: 'SoyUna', lastname: 'Prueba', Email: 'pru@gmailcom', Total_score: 3)
+	g = Gambler.create(name: 'SoyUna', lastname: 'Prueba', Email: 'pru@gmailcom')
 	g.password=('abc')
 	g.save
-	g = Gambler.create(name: 'George', lastname: 'jorge', Email: 'gj@gmailcom', Total_score: 7)
+	g = Gambler.create(name: 'George', lastname: 'jorge', Email: 'gj@gmailcom')
 	g.password=('abc')
 	g.save
 
+	p = Prediction.create(match: match, gambler: g, team1_goals: 1, team2_goals: 0)
+	r = Result.create(match: match, team1_goals: 1, team2_goals: 0)
 
-
-
+	match = Match.find_by(id: 1)
+	p = Prediction.create(match: match, gambler: g, team1_goals: 1, team2_goals: 0)
+	r = Result.create(match: match, team1_goals: 0, team2_goals: 0)
 
 
 
