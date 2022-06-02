@@ -11,7 +11,7 @@ class Gambler < ActiveRecord::Base
   validates :Email, presence: true
   #El mail debe ser unico
   validates :Email, uniqueness: true
-
+  
   def password
     @password ||= Password.new(password_digest)
   end
