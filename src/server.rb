@@ -50,6 +50,22 @@ class App < Sinatra::Application
   end
 
   get '/prueba' do
+    t1 = Team.new
+    t1.name = "Irlana"
+    t2 = Team.new
+    t2.name = "Gales"
+    t1.save
+    t2.save
+    m1 = Match.new
+    m1.local = t1
+    m1.visitor = t2
+    m1.round = 1
+    m1.save
+    r1 = Result.new
+    r1.match = m1
+    r1.team1_goals = 3
+    r1.team2_goals = 4
+    #r1.save
     "Aguante boca"
   end
 
@@ -109,6 +125,8 @@ class App < Sinatra::Application
   end
 
   get '/addPrediction' do
+    @resultado = Result.all
+    @user = @current_user
     @partidos = Match.all
     erb :addPrediction
   end
@@ -116,7 +134,7 @@ class App < Sinatra::Application
   post '/addPrediction' do
     gambler = @current_user
     json = request.params
-    for index in 0..json.size do
+    for index in 0..json.size-1 do
       logger.info json['p'][index]['id']
       prediction = Prediction.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'], team2_goals: json['p'][index]['team2_goals'])
       gambler.prediction << prediction
