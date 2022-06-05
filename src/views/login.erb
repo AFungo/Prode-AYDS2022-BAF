@@ -1,9 +1,16 @@
-<h1>Login</h1>
+
   <% if @error %>
       <div class="error">Login failed.</div>
   <% end %>
-  <form action="/login" method="post" >
-      <input type="text" name="username" placeholder="Username" />
-      <input type="password" name="password" placeholder="Password" />      
-      <input type="submit" name="button" value="Login" />
-  </form>
+
+  <div class="fondo"> 
+    <div class="login">
+    <div class="login-triangle"></div>
+    <h2 class="login-header">Sign Up</h2>
+    <form class="login-container" action="/login" method="post" >
+        <input type="name" name="username" placeholder="Username" />
+        <input type="password" name="password" placeholder="Password" />      
+        <input type="button" name="button" value="Login" />
+    </form>
+    </div>
+  </div>
