@@ -1,3 +1,5 @@
 .forecast_development.sqlite3
 .schema.rb
 .test.sqlite3
+src/db/forecast_development.sqlite3
+.gitignore
