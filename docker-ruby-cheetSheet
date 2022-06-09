@@ -36,7 +36,8 @@ test ::
 	
 	sudo docker-compose exec app bundle exec rspec //CORRER LOS TEST
 
-
+	
+	puts(valid_match.errors.inspect) // ver errores de pq es invalido el test va en el test
 crear datos db:
 	team1 = Team.create(name: 'Argentina')
 	team2 = Team.create(name: 'Nigeria')
