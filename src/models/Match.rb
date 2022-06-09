@@ -7,6 +7,7 @@ class Match < ActiveRecord::Base
     validates :local, presence: true
     validates :visitor, presence: true
     validates :round, presence: true
+    validates :round, uniqueness: {scope: [:local_id, :visitor_id], message: "Once match with same teams per round"}
     def check_prop
         local!=visitor
     end

@@ -10,6 +10,7 @@ class Gambler < ActiveRecord::Base
   validates :lastname, presence: true
   validates :Email, presence: true
   #El mail debe ser unico
+  validates  :name, uniqueness: true
   validates :Email, uniqueness: true
   
   def password

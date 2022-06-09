@@ -4,7 +4,14 @@ class Result < ActiveRecord::Base
     #Un resultado pertenece a un partido y está relacionado con muchas predicciones 
     belongs_to :match
     has_many :prediction
-   
+    
+    validates :match, uniqueness: true
+    validates :team1_goals, presence: true
+    validates :team2_goals,  presence: true
+    validates :team1_goals, comparison: {greater_than: 0}
+    validates :team2_goals, comparison: {greater_than: 0}
+
+
     def calculatePoints(mat)
 		t1GoalsP = mat.team1_goals
 		t2GoalsP = mat.team2_goals
