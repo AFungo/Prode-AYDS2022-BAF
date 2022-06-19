@@ -15,12 +15,13 @@ class App < Sinatra::Application
     if session[:gambler_id]
       @current_user = Gambler.find_by(id: session[:gambler_id])
     else
-      public_pages = ["/", "/login",'/signup']
+      public_pages = ["/", "/login",'/signup',"/admin"]#sacar admin
       if !public_pages.include?(request.path_info)
         redirect '/login'
       end
     end
   end
+
   configure :development do
     set :sessions, true
     set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
@@ -36,7 +37,7 @@ class App < Sinatra::Application
     logger.level = Logger::DEBUG if development?
     set :logger, logger
 
-  end
+    end
 
   def initialize(app = nil)
     super()
@@ -48,7 +49,11 @@ class App < Sinatra::Application
     @partidos = Match.all
     erb :matches        
   end
-
+  
+  get '/admin' do
+    erb :admin
+  end
+  
   get '/prueba' do
     t1 = Team.new
     t1.name = "Irlana"
@@ -144,8 +149,21 @@ class App < Sinatra::Application
     redirect to "/score"
   end
 
+  post '/addTeam' do 
+    redirect to '/admin'
+  end
+
+  post '/addMatch' do
+    redirect to '/admin'
+  end
+  
+  post '/addResult' do
+    redirect to '/admin'
+  end
+
   get '/score' do
     @gamblers = Gambler.order(Total_score: :desc)
     erb :score
   end
+
 end
