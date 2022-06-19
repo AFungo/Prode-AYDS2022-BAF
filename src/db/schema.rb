@@ -17,6 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_201607) do
     t.string "Email"
     t.integer "Total_score", default: 0
     t.integer "predictions_id"
+    t.boolean "Admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest", default: "", null: false
