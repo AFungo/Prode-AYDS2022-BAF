@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>admin</title>
+  </head>
+  <body>
+    <h1>Administracion</h1>
+        <form action="/addTeam" method="post" >
+            </br>
+            <h3>Añadir equipo</h3>
+            <%= "Nombre: "%>
+            <input type="string" name="teamName" placeholder="Team name" />
+            </br>
+            <input type="submit" name="button" value="Añadir" />
+        </form>
+
+        
+        <form action="/addMatch" method="post" >
+            </br>
+            <h3> Añadir partido </h3>    
+            <%= "Local: "%>
+            <%= "Visitante: "%>
+            <%= "Hora: "%>
+            <%= "Estapa: "%>
+            </br>
+            <input type="submit" name="button" value="Añadir" />
+            </br>
+        </form>
+
+
+        <form action="/addResult" method="post" >
+            </br>
+            <h3> Añadir Resultado </h3>
+            <%= "Id partido: "%>
+            <%= "Goles local: "%>
+            <%= "Goles visitante: "%>
+            </br>
+            <input type="submit" name="button" value="Añadir" />
+            </br>
+        </form>
+    
+    </body>
+</html>
