@@ -220,9 +220,15 @@ class App < Sinatra::Application
     @gamblers = Gambler.order(Total_score: :desc)
     erb :score
   end
+
   get '/results' do
     @results = Result.all
     erb :results
   end
 
+  get '/predictions' do
+    @predictions = Prediction.where(gambler_id: session[:gambler_id])
+    logger.info @predictions
+    erb :predictions
+  end
 end
