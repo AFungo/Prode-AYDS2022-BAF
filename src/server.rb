@@ -139,7 +139,7 @@ class App < Sinatra::Application
   post '/addPrediction' do
     gambler = @current_user
     json = request.params
-    for index in 0..json.size-1 do
+    for index in 0..json.size do
       logger.info json['p'][index]['id']
       prediction = Prediction.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'], team2_goals: json['p'][index]['team2_goals'])
       gambler.prediction << prediction
@@ -150,21 +150,43 @@ class App < Sinatra::Application
   end
 
   get '/addResult' do
-    @partidos = Match.all 
+    @partidos = Match.all
+    @resultados = Result.all
     erb :addResult
   end
 
+  get '/addMatch' do
+    erb :addMatch
+  end
+
+  get '/addTeam' do
+    erb :addTeam
+  end
+
   post '/addTeam' do 
+    json = request.params
+    t1 = Team.new
+    t1.name = json['Team_name']
+    t1.save
     redirect to '/admin'
   end
 
   post '/addMatch' do
+    json = request.params
+    t1 = Team.find_by(name: json['Team1_name'])
+    t2 = Team.find_by(name: json['Team2_name'])
+    m1 = Match.new
+    m1.local_id = t1.id
+    m1.visitor_id = t2.id
+    m1.datetime = json['date']
+    m1.round = 1;
+    m1.save
     redirect to '/admin'
   end
   
   post '/addResult' do
     json = request.params
-    for index in 0..json.size-1 do
+    for index in 0..json.size do
       logger.info json['p'][index]['id']
       result = Result.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'], team2_goals: json['p'][index]['team2_goals'])
       result.save

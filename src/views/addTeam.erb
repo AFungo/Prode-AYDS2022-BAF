@@ -1,0 +1,11 @@
+<h1>Add Team</h1>
+  <% if @error %>
+      <div class="error">Team failed.</div>
+  <% end %>
+  <form action="/addTeam" method="post" >
+    
+    <input type="text" name="Team_name" placeholder="Team name" />
+    
+    <input type="submit" name="button" value="Add Team" />
+  
+  </form> 

@@ -1,0 +1,13 @@
+<h1>Add Match</h1>
+  <% if @error %>
+      <div class="error">Team failed.</div>
+  <% end %>
+  <form action="/addMatch" method="post" >
+    
+    <input type="text" name="Team1_name" placeholder="Team1 name" />
+    <input type="text" name="Team2_name" placeholder="Team2 name" />
+    <input type="date" name="date" placeholder="Date" />
+
+    <input type="submit" name="button" value="Add Match" />
+  
+  </form> 

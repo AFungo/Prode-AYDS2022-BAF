@@ -4,7 +4,7 @@
   <% end %>
   <form action="/addResult" method="post" >
     <% @partidos.each do |p| %>
-  
+      <% if !@resultados.where(match: p).exists?  %>
       <input type="hidden" id="p_id" name="p[][id]" value=<%= p.id%> />
       <%= Team.find_by(id: p.local_id).name%>
       <input type="number" name="p[][team1_goals]" placeholder="Team1 goals" />
@@ -14,7 +14,8 @@
       <%@match = p.id%>
       </br>
       </br>      
-    <% end %>
+      <% end %>
+      <% end %>
     </br>
     <input type="submit" name="button" value="Add Result" />
   </form> 
