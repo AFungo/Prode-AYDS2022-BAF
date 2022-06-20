@@ -13,13 +13,22 @@ class App < Sinatra::Application
 
   before do
     if session[:gambler_id]
+      admin = Gambler.find_by(id: session[:gambler_id]).Admin
       @current_user = Gambler.find_by(id: session[:gambler_id])
+      admin_pages = ["/addResult","/addMatch", "/addTeam", "/admin"]
+    
+      if !admin and admin_pages.include?(request.path_info)
+        redirect '/matches'
+      end
+  
     else
-      public_pages = ["/", "/login",'/signup',"/admin"]#sacar admin
+      public_pages = ["/", "/login",'/signup']#sacar admin
+
       if !public_pages.include?(request.path_info)
         redirect '/login'
       end
     end
+    
   end
 
   configure :development do
@@ -139,8 +148,8 @@ class App < Sinatra::Application
   post '/addPrediction' do
     gambler = @current_user
     json = request.params
-    for index in 0..json.size do
-      logger.info json['p'][index]['id']
+    for index in 0..json.size-2 do
+      logger.info json.size
       prediction = Prediction.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'], team2_goals: json['p'][index]['team2_goals'])
       gambler.prediction << prediction
       prediction.save
@@ -188,7 +197,7 @@ class App < Sinatra::Application
   
   post '/addResult' do
     json = request.params
-    for index in 0..json.size do
+    for index in 0..json.size-1 do
       logger.info json['p'][index]['id']
       result = Result.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'], team2_goals: json['p'][index]['team2_goals'])
       result.save
