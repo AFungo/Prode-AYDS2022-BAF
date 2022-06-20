@@ -149,6 +149,11 @@ class App < Sinatra::Application
     redirect to "/score"
   end
 
+  get '/addResult' do
+    @partidos = Match.all 
+    erb :addResult
+  end
+
   post '/addTeam' do 
     redirect to '/admin'
   end
@@ -158,6 +163,13 @@ class App < Sinatra::Application
   end
   
   post '/addResult' do
+    json = request.params
+    for index in 0..json.size-1 do
+      logger.info json['p'][index]['id']
+      result = Result.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'], team2_goals: json['p'][index]['team2_goals'])
+      result.save
+      result.change_score  
+    end
     redirect to '/admin'
   end
 
