@@ -220,5 +220,9 @@ class App < Sinatra::Application
     @gamblers = Gambler.order(Total_score: :desc)
     erb :score
   end
+  get '/results' do
+    @results = Result.all
+    erb :results
+  end
 
 end
