@@ -165,6 +165,7 @@ class App < Sinatra::Application
   end
 
   get '/addMatch' do
+    @teams = Team.all
     erb :addMatch
   end
 

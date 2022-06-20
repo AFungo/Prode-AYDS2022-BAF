@@ -4,8 +4,8 @@
   <% end %>
   <form action="/addMatch" method="post" >
     
-    <input type="text" name="Team1_name" placeholder="Team1 name" />
-    <input type="text" name="Team2_name" placeholder="Team2 name" />
+    <input list = "allteams" type="text" name="Team1_name" placeholder="Team1 name" />
+    <input list = "allteams" type="text" name="Team2_name" placeholder="Team2 name" />
     <input type="date" name="date" placeholder="Date" />
     <input type="number" name="round" placeholder="Round" />
     <input type="submit" name="button" value="Add Match" />
@@ -23,4 +23,11 @@
     <%="9  | Cuartos"%> </br>
     <%="10 | Semifinal"%> </br>
     <%="11 | Final"%> </br>
+
+    <datalist id="allteams">
+      <% @teams.each do |p| %>
+        <option value= <%= p.name %> >
+      <% end %>
+    </datalist>
+
   </form> 
