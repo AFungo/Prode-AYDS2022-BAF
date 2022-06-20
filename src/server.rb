@@ -175,11 +175,13 @@ class App < Sinatra::Application
     json = request.params
     t1 = Team.find_by(name: json['Team1_name'])
     t2 = Team.find_by(name: json['Team2_name'])
+    logger.info t1
     m1 = Match.new
     m1.local_id = t1.id
     m1.visitor_id = t2.id
     m1.datetime = json['date']
-    m1.round = 1;
+    r = json['round']
+    m1.round = r.to_i
     m1.save
     redirect to '/admin'
   end
@@ -193,6 +195,16 @@ class App < Sinatra::Application
       result.change_score  
     end
     redirect to '/admin'
+  end
+
+  post '/redirectAddTeam' do
+    redirect to '/addTeam'
+  end
+  post '/redirectAddMatch' do
+    redirect to '/addMatch'
+  end
+  post '/redirectAddResult' do
+    redirect to '/addResult'
   end
 
   get '/score' do

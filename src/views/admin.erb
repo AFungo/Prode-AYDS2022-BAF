@@ -5,37 +5,25 @@
   </head>
   <body>
     <h1>Administracion</h1>
-        <form action="/addTeam" method="post" >
+        <form action="/redirectAddTeam" method="post" >
             </br>
             <h3>Añadir equipo</h3>
-            <%= "Nombre: "%>
-            <input type="string" name="teamName" placeholder="Team name" />
-            </br>
-            <input type="submit" name="button" value="Añadir" />
+            <input type="submit" name="button" value="Ir" />
         </form>
 
         
-        <form action="/addMatch" method="post" >
+        <form action="/redirectAddMatch" method="post" >
             </br>
             <h3> Añadir partido </h3>    
-            <%= "Local: "%>
-            <%= "Visitante: "%>
-            <%= "Hora: "%>
-            <%= "Estapa: "%>
-            </br>
-            <input type="submit" name="button" value="Añadir" />
+            <input type="submit" name="button" value="Ir" />
             </br>
         </form>
 
 
-        <form action="/addResult" method="post" >
+        <form action="/redirectAddResult" method="post" >
             </br>
             <h3> Añadir Resultado </h3>
-            <%= "Id partido: "%>
-            <%= "Goles local: "%>
-            <%= "Goles visitante: "%>
-            </br>
-            <input type="submit" name="button" value="Añadir" />
+            <input type="submit" name="button" value="Ir" />
             </br>
         </form>
     
