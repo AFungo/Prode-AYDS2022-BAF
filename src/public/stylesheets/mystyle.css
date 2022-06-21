@@ -207,5 +207,36 @@ tr {
   padding: 8px;
   }
 
+  
+.navegacion input {
+  box-sizing: border-box;
+  display: block;
+  width: 15%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+  margin-left: 25px;
+  margin-right: auto;
+  margin-bottom: 16px;
+  
+}
 
+.navegacion input[type="button"]{
+  background: #22c272;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.navegacion input[type="button"]:hover{
+  background: #02723a;
+}
+
+
+.navegacion input[type="button"]:focus{
+  border-color: #02723a;
+}
 
