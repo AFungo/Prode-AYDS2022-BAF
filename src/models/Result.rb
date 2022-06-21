@@ -8,8 +8,8 @@ class Result < ActiveRecord::Base
     validates :match, uniqueness: true
     validates :team1_goals, presence: true
     validates :team2_goals,  presence: true
-    validates :team1_goals, comparison: {greater_than: 0}
-    validates :team2_goals, comparison: {greater_than: 0}
+    validates :team1_goals, comparison: {greater_than: -1}
+    validates :team2_goals, comparison: {greater_than: -1}
 
 
     def calculatePoints(mat)

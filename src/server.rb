@@ -134,7 +134,9 @@ class App < Sinatra::Application
   end
 
   get '/logout' do
+    logger.info session[:gambler_id]
     session.clear
+    logger.info session[:gambler_id]
     redirect to "/"
   end
 
