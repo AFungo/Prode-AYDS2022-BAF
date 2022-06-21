@@ -4,25 +4,34 @@
     <title>Results</title>
   </head>
   <body>
-    <h1>Resultados</h1>
-    <% @results.each do |p| %>
-        <%m = Match.find_by(id: p.match_id)%>
-        <%= Team.find_by(id: m.local_id).name %>
-        <%= p.team1_goals %>
-        <%= 'vs' %> 
-        <%= Team.find_by(id: m.visitor_id).name %>
-        <%= p.team2_goals %>
-        <%= ' Fecha: '%>
-        <%= m.datetime%>
-        <%= ' Ronda: '%>
-        <%= m.round%>
-        </br>
-    <% end %>
+    <h1 class="titulo">Resultados</h1>
+    <div class="table">
+      <table>
+        <tr>
+          <th> Equipo 1 </th>
+          <th> Equipo 2 </th>
+          <th> Fecha </th>
+          <th> Ronda </th>
+        </tr>
+        <% @results.each do |p| %>
+          <%m = Match.find_by(id: p.match_id)%>
+          <tr>
+            <td> <%= Team.find_by(id: m.local_id).name %> <%= ' - ' %> <%= p.team1_goals %>
+            <td> <%= Team.find_by(id: m.visitor_id).name %> <%= ' - ' %> <%= p.team2_goals %>
+            <td> <%= m.datetime%> </td>
+            <td> <%= m.round%> </td>
+          </tr>
+          <% end %>
+      </table>
+    </div>
+
+    <div class="navegacion">
     <form>
       <a href="http://localhost:4567/">
       <input type="button" value="Inicio">
       </a>
     </form>
+    </div>
 
   </body>
 </html>

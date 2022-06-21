@@ -4,23 +4,35 @@
     <title>Predictions</title>
   </head>
   <body>
-    <h1>Mis predicciones</h1>
-    <% @predictions.each do |p| %>
-        <%m = Match.find_by(id: p.match_id)%>
-        <%= Team.find_by(id: m.local_id).name %>
-        <%= p.team1_goals %>
-        <%= 'vs' %> 
-        <%= Team.find_by(id: m.visitor_id).name %>
-        <%= p.team2_goals %>
-        <%= ' Ronda: '%>
-        <%= m.round%>
-        </br>
-    <% end %>
+    <h1 class="titulo">MIS PREDICCIONES</h1>
+    <div class="table">
+      <table>
+        <tr>
+          <th>Equipo 1 </th>
+          <th>Equipo 2 </th>
+          <th>Ronda </th>
+        <tr>
+
+        <% @predictions.each do |p| %>
+          <%m = Match.find_by(id: p.match_id)%>
+          <tr>
+            <td> <%= Team.find_by(id: m.local_id).name %> <%= ' - ' %> <%= p.team1_goals %> </td>
+            <td> <%= Team.find_by(id: m.visitor_id).name %> <%= ' - ' %> <%= p.team2_goals %> </td>
+            <td>  <%= m.round%> </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+
+    </br>
+
+    <div class="navegacion">
     <form>
       <a href="http://localhost:4567">
-      <input type="button" value="Inicio">
+      <input type="button" value="INICIO">
       </a>
     </form>
+    </div>
 
   </body>
 </html>
