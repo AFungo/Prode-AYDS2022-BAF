@@ -4,22 +4,40 @@
     <title>Ranking</title>
   </head>
   <body>
-    <h1>Posciciones apostadores</h1>
-    <% i = 1 %>
-    <% @gamblers.each do |p| %>
-        <%= i %>
-        <%= p.name %>
-        <%= p.lastname %> 
-        <%= p.Total_score %>
-        <% i = i+1 %>
-        </br>
-    <% end %>
-    </br>
-    <form>
-      <a href="http://localhost:4567">
-      <input type="button" value="inicio">
-      </a>
-    </form>
-    </br>
+    <h1 class="titulo">POSICIONES APOSTADORES</h1>
+    <div class="table">
+      <table>
+
+        <tr>
+          <th> Posición </th>
+          <th> Nombre </th>
+          <th> Puntaje </th>
+        </tr>
+
+        <% i = 1 %>
+        <% @gamblers.each do |p| %>
+          <tr>
+            <td> <%= i %> </td>
+            <td> <%= p.name %> <%= p.lastname %>  </td>
+            <td> <%= p.Total_score %> </td>
+          </tr>
+          <% i = i+1 %>
+        <% end %>
+
+
+
+      </table>
+    </div>
+    
+
+    <div class="navegacion">
+      <form>
+        <a href="http://localhost:4567">
+        <input type="button" value="INICIO">
+        </a>
+      </form>
+      </br>
+    </div>
+
   </body>
 </html>

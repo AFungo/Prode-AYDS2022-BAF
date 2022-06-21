@@ -169,7 +169,7 @@ table {
 }
 
 
-#tituloPartido{
+.titulo{
   color:#edebeb;
   background-color: #091a08;
   text-align: center;
