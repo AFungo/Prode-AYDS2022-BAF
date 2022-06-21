@@ -6,38 +6,39 @@
 
   <div class="prediction">
     <div class="prediction-container">
-    <h1 class="prediction-header">Haz una predicción para cada partido</h1>
+      <h1 class="prediction-header">Haz una predicción para cada partido</h1>
 
-    <form action="/addPrediction" method="post" >
-      <% @partidos.each do |p| %>
-    
-        <% if ! @user.prediction.where(match: p).exists? &&  ! @resultado.where(match: p).exists? %>
-          <input type="hidden" id="p_id" name="p[][id]" value=<%= p.id%> />
+      <form action="/addPrediction" method="post">
+
+        <% @partidos.each do |p| %>
+
+          <% if ! @user.prediction.where(match: p).exists? &&  ! @resultado.where(match: p).exists? %>
+
+          <input type="hidden" id="p_id" name="p[][id]" value=<%= p.id%> >
           <%= Team.find_by(id: p.local_id).name%>
-          <input type="number" name="p[][team1_goals]" placeholder="Team 1 goals" />
+          <input type="number" name="p[][team1_goals]" placeholder="Team 1 goals" >
           <%= ' vs ' %> 
           <%= Team.find_by(id: p.visitor_id).name %>
-          <input type="number" name="p[][team2_goals]" placeholder="Team 2 goals" />
-          <%@match = p.id%> 
+          <input type="number" name="p[][team2_goals]" placeholder="Team 2 goals" >
+          <% @match = p.id %> 
           </br>
-          </br>      
+          <% end %>
+          </br>
         <% end %>
+        </br>
 
-      <%end%>
-      <div class="navegacion" >
-      <input type="submit" name="button" value="Predecir" />
-      </div>
+        <div class="navegacion" >
+        <input type="submit" name="button" value="Predecir" />
+        </div>
 
+      </form>
     </div>
   </div>
   </br>
 
+  <div class="navegacion">
 
-    <div class="navegacion">
-  </form>
-  
-
-  <form>
+    <form>
       <a href="http://localhost:4567/predictions">
       <input type="button" value="MIS PREDICCIONES">
       </a>
@@ -50,4 +51,5 @@
       </a>
     </form>
     </br> 
+          
   </div>

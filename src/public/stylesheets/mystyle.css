@@ -75,7 +75,7 @@ body {
 }
 
 .login-header,
-.signin-header {
+.signin-header{
   background: #3bd387;
   padding: 20px;
   font-size: 1.4em;
@@ -172,6 +172,7 @@ table {
 .titulo{
   color:#edebeb;
   background-color: #091a08;
+  background-attachment: fixed;
   text-align: center;
   font-size: x-larger;
   font-family: 'Open Sans', sans-serif;
@@ -224,19 +225,43 @@ tr {
   
 }
 
-.navegacion input[type="button"]{
+.navegacion input[type="button"],
+.navegacion input[type="submit"]{
   background: #22c272;
   border-color: transparent;
   color: #fff;
   cursor: pointer;
 }
 
-.navegacion input[type="button"]:hover{
+.navegacion input[type="button"]:hover,
+.navegacion input[type="submit"]:hover{
   background: #02723a;
 }
 
 
-.navegacion input[type="button"]:focus{
+.navegacion input[type="button"]:focus,
+.navegacion input[type="submit"]:focus{
   border-color: #02723a;
 }
 
+.prediction {
+  width: 700px;
+  margin: 16px auto;
+  font-size: 16px;
+}
+
+.prediction-container form{
+  background: #ebebeb;
+  padding: 18px;
+}
+
+.prediction-header{
+  background: #3bd387;
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: left;
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 0;
+}
