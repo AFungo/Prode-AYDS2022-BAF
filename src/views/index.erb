@@ -27,7 +27,7 @@
           <div class="login-triangle"></div>
           <h2 class="login-header">Log in</h2>
             <a class="login" href="http://localhost:4567/login">
-            <input type="button" value="Log in">
+            <input type="submit" value="Log in">
             </a>
           
           <% end %>
@@ -41,7 +41,7 @@
           <div class="signin-triangle"></div>
             <h2 class="signin-header">Sing up</h2>
               <a href="http://localhost:4567/signup">
-              <input type="button" value="Sign up">
+              <input type="submit" value="Sign up">
               </a>
         </div>
       </div>
@@ -50,7 +50,7 @@
       <% if session[:gambler_id] %>
       <form>
         <a href="http://localhost:4567/logout">
-        <input type="button" value="Logout">
+        <input type="submit" value="Logout">
         </a>
       </form>
       <% end  %>
