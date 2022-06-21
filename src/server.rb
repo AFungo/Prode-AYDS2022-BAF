@@ -148,9 +148,13 @@ class App < Sinatra::Application
   post '/addPrediction' do
     gambler = @current_user
     json = request.params
-    for index in 0..json.size-2 do
-      logger.info json.size
+    param = json['p']
+    size = param.size
+    for index in 0..size-1 do
+      logger.info size
       prediction = Prediction.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'], team2_goals: json['p'][index]['team2_goals'])
+      prediction.gambler = gambler
+      logger.info prediction
       gambler.prediction << prediction
       prediction.save
       gambler.save  
@@ -198,7 +202,9 @@ class App < Sinatra::Application
   
   post '/addResult' do
     json = request.params
-    for index in 0..json.size-1 do
+    param = json['p']
+    size = param.size
+    for index in 0..size-1 do
       logger.info json['p'][index]['id']
       result = Result.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'], team2_goals: json['p'][index]['team2_goals'])
       result.save

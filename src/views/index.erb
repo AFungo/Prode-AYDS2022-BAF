@@ -48,6 +48,25 @@
       <% end %>
       
       <% if session[:gambler_id] %>
+      </br></br>
+      <form>
+        <a href="http://localhost:4567/matches">
+        <input type="button" value="Partidos">
+        </a>
+      </form>
+      </br>
+      <form>
+        <a href="http://localhost:4567/score">
+        <input type="button" value="Tabla">
+        </a>
+      </form>
+      </br>
+      <form>
+        <a href="http://localhost:4567/addPrediction">
+        <input type="button" value="Predecir">
+        </a>
+      </form>
+      </br>
       <form>
         <a href="http://localhost:4567/logout">
         <input type="submit" value="Logout">
