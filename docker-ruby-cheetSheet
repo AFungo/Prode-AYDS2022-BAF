@@ -40,8 +40,8 @@ test ::
 	puts(valid_match.errors.inspect) // ver errores de pq es invalido el test va en el test
 crear datos db:
 	team1 = Team.create(name: 'Argentina')
-	team2 = Team.create(name: 'Nigeria')
-	date = DateTime.new(2022,12,3,12,10) 
+	team2 = Team.create(name: 'Korea del norte')
+	date = DateTime.new(2022,10,3,12,10) 
 	team1.save
 	team2.save
 	match = Match.create(local_id: 1, visitor_id: 2, round: 1, datetime: date)
