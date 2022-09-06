@@ -123,7 +123,6 @@ class App < Sinatra::Application
     if json['password'] == json['repeatpassword']
       g1 = Gambler.new
       g1.name = json['username']
-      g1.lastname = json['lastname']
       g1.password=(json['password'])
       g1.Email = json['email']
       g1.Total_score = 0

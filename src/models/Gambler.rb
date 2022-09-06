@@ -7,7 +7,6 @@ class Gambler < ActiveRecord::Base
 	has_many :prediction
   #Si o si debe tener nombre, apellido y mail
   validates  :name, presence: true
-  validates :lastname, presence: true
   validates :Email, presence: true
   #El mail debe ser unico
   validates  :name, uniqueness: true
