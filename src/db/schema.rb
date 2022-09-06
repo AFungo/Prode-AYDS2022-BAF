@@ -13,7 +13,6 @@
 ActiveRecord::Schema[7.0].define(version: 2022_05_18_201607) do
   create_table "gamblers", force: :cascade do |t|
     t.string "name"
-    t.string "lastname"
     t.string "Email"
     t.integer "Total_score", default: 0
     t.integer "predictions_id"

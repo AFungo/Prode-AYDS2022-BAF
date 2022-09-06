@@ -117,7 +117,6 @@ body {
 .login input[type="email"],
 .login input[type="password"]
 .sign input[type="name"],
-.sign input[type="lastname"],
 .sign input[type="email"],
 .sign input[type="password"]
 {
@@ -130,7 +129,6 @@ body {
 .login input[type="email"]:focus,
 .login input[type="password"]:focus,
 .signin input[type="name"]:focus,
-.signin input[type="lastname"]:focus,
 .signin input[type="email"]:focus,
 .signin input[type="password"]:focus {
   border-color: #3c4634;
