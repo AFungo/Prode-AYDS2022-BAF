@@ -5,7 +5,7 @@ describe 'Prediction' do
   describe "valid" do
         describe 'when there is no prediction' do
             it "should be valid" do
-#                g1 = Gambler.create(name: 'Sebastian',lastname: 'Villa',Email: 'sevilla@gmail.com',Total_score: 0)
+#                g1 = Gambler.create(name: 'Sebastian',Email: 'sevilla@gmail.com',Total_score: 0)
  #               t1 = Team.create(name: 'nigeria')
   #              t2 = Team.create(name: 'argentina')
    #             m1 = Match(local: t1,visitor: t2)

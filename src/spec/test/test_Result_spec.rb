@@ -4,7 +4,7 @@ describe '#Result' do
     let(:team_1) { Team.new(name: 'T1') }
     let(:team_2) { Team.new(name: 'T2') } 
     
-    let(:user) {Gambler.new(name: 'G1', lastname: 'Gl2', Email: 'g@gmail.com')}
+    let(:user) {Gambler.new(name: 'G1', Email: 'g@gmail.com')}
 
     let(:match) { Match.new(local: team_1, visitor: team_2, round: 1) }    
 
