@@ -33,8 +33,17 @@ body {
 }
 
 .welcome {
-  background: #3bd387;
+  background:  #3bd387;
   border: 0px;
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+.popup {
+  background:red ;
   padding: 20px;
   font-size: 1.4em;
   font-weight: normal;

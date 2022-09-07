@@ -17,8 +17,19 @@
     <div class="welcome">
       <h1>Esto no es un pagina ilegal de apuestas</h1>
       <h3>-- Prode Mundial de Futbol --</h3>
-    </div>
+    </div> 
+
+    
+        <% flash.keys.each do |type| %>
+            <div class="popup">
+              <h4> <%= flash[type] %> </h4>
+            </div>
+          <% end %>
+    
 
   <%= yield %>
   </body>
 </html>
+
+
+  

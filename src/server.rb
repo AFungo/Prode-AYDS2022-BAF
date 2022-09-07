@@ -1,5 +1,6 @@
 require 'bundler/setup'
 require 'sinatra/base'
+require 'sinatra/flash'
 
 require 'sinatra/reloader' if Sinatra::Base.environment == :development  
 
@@ -10,7 +11,7 @@ require 'logger'
 require_relative 'models/init'
 
 class App < Sinatra::Application
-
+  
   before do
     if session[:gambler_id]
       admin = Gambler.find_by(id: session[:gambler_id]).Admin
@@ -41,7 +42,9 @@ class App < Sinatra::Application
       puts 'Reloaded...'
     end
     enable :logging
-  
+    enable :sessions
+    
+    
     logger = Logger.new(STDOUT)
     logger.level = Logger::DEBUG if development?
     set :logger, logger
@@ -106,7 +109,8 @@ class App < Sinatra::Application
       session[:gambler_id] = user.id
       redirect to "/matches"
     else
-      redirect to "/login"
+      flash[:notice] = "ups"
+      redirect to :login
     end
   end
 
