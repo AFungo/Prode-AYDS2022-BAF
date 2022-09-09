@@ -3,6 +3,14 @@
       <div class="error">Signup failed.</div>
   <% end %>
 
+  <% flash.keys.each do |type| %>
+    <% if type == :alert %>
+      <div class="popup">
+        <h4> <%= flash[type] %> </h4>
+        </div>
+      <% end %>
+  <% end %>
+
   <div class="fondo"> 
     <div class="signin">
     <div class="signin-triangle"></div>

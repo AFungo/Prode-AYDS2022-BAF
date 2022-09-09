@@ -2,6 +2,21 @@
       <div class="error">Login failed.</div>
   <% end %>
 
+  <% flash.keys.each do |type| %>
+    <% if type == :alert %>
+      <div class="popup">
+        <h4> <%= flash[type] %> </h4>
+      </div>
+    <% end %>
+
+    <% if type == :notice %>
+      <div class="popupn">
+        <h4> <%= flash[type] %> </h4>
+      </div>
+    <% end %>
+
+  <% end %>
+
   <div class="fondo"> 
     <div class="login">
     <div class="login-triangle"></div>

@@ -52,6 +52,16 @@ body {
   color: #fff;
 }
 
+.popupn {
+  background:rgb(56, 241, 56) ;
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+
 .login,
 .signin {
   width: 400px;

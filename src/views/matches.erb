@@ -5,6 +5,14 @@
   </head>
   <body>
 
+  <% flash.keys.each do |type| %>
+    <% if type == :notice %>
+      <div class="popupn">
+        <h4> <%= flash[type] %> </h4>
+        </div>
+      <% end %>
+  <% end %>
+
     <div class="table">
       <table>
       <h1 class="titulo">PARTIDOS</h1>

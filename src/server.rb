@@ -107,9 +107,10 @@ class App < Sinatra::Application
     logger.info user.inspect
     if user && user.password == json['password']
       session[:gambler_id] = user.id
+      flash[:notice] = "Bienvenido."
       redirect to "/matches"
     else
-      flash[:notice] = "ups"
+      flash[:alert] = "Contraseña o usuario incorrectos."
       redirect to :login
     end
   end
@@ -131,9 +132,12 @@ class App < Sinatra::Application
       g1.Email = json['email']
       g1.Total_score = 0
       g1.save
+      flash[:notice] = "Gracias por registrarte!!!"
       redirect to "/login"
+    else
+      flash[:alert] = "Las contraseñas no coinciden"
+      redirect to "/signup"
     end
-    redirect to "/signup"
   end
 
   get '/logout' do
