@@ -1,17 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Prode-BAF" company="" webLink="http://" view-date="2022-08-31" view-index="0" gantt-divider-location="351" resource-divider-location="300" version="3.2.3246" locale="es_AR">
+<?xml version="1.0" encoding="UTF-8"?><project name="Prode-BAF" company="" webLink="http://" view-date="2022-08-31" view-index="0" gantt-divider-location="370" resource-divider-location="300" version="2.8.11" locale="es_AR">
     <description/>
     <view zooming-state="default:2" id="gantt-chart">
-        <field id="tpd3" name="Name" width="200" order="0"/>
-        <field id="tpd4" name="Begin date" width="75" order="1"/>
-        <field id="tpd5" name="End date" width="75" order="2"/>
-        <option id="filter.completedTasks" value="false"/>
-        <option id="color.recent">
-            <![CDATA[#009999 #000000 #3333ff #990099 #ff9900 #33ff33 #99ff66]]>
-        </option>
+        <field id="tpd3" name="Nombre" width="205" order="0"/>
+        <field id="tpd4" name="Fecha de inicio" width="81" order="1"/>
+        <field id="tpd5" name="Fecha de fin" width="80" order="2"/>
+        <option id="color.recent"><![CDATA[#009999 #000000 #3333ff #990099 #ff9900 #33ff33 #99ff66]]></option>
     </view>
     <view id="resource-table">
-        <field id="0" name="Name" width="210" order="0"/>
-        <field id="1" name="Default role" width="86" order="1"/>
+        <field id="0" name="Nombre" width="210" order="0"/>
+        <field id="1" name="Función" width="86" order="1"/>
     </view>
     <!-- -->
     <calendars>
