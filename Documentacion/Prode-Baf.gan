@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Prode-BAF" company="" webLink="http://" view-date="2022-08-31" view-index="0" gantt-divider-location="370" resource-divider-location="300" version="2.8.11" locale="es_AR">
+<?xml version="1.0" encoding="UTF-8"?><project name="Prode-BAF" company="" webLink="http://" view-date="2022-08-31" view-index="0" gantt-divider-location="445" resource-divider-location="300" version="2.8.11" locale="es_AR">
     <description/>
     <view zooming-state="default:2" id="gantt-chart">
-        <field id="tpd3" name="Nombre" width="205" order="0"/>
-        <field id="tpd4" name="Fecha de inicio" width="81" order="1"/>
-        <field id="tpd5" name="Fecha de fin" width="80" order="2"/>
+        <field id="tpd3" name="Nombre" width="230" order="0"/>
+        <field id="tpd4" name="Fecha de inicio" width="106" order="1"/>
+        <field id="tpd5" name="Fecha de fin" width="105" order="2"/>
         <option id="color.recent"><![CDATA[#009999 #000000 #3333ff #990099 #ff9900 #33ff33 #99ff66]]></option>
     </view>
     <view id="resource-table">
@@ -37,7 +37,7 @@
         <task id="0" name="Corregir los goles negativos." color="#8cb6ce" meeting="false" start="2022-08-31" duration="1" complete="0" thirdDate="2022-08-31" thirdDate-constraint="0" expand="true">
             <depend id="5" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="5" name="Finalizar la interfaz grafica." color="#000000" meeting="false" start="2022-09-05" duration="2" complete="0" thirdDate="2022-08-31" thirdDate-constraint="0" expand="true"/>
+        <task id="5" name="Finalizar la interfaz grafica." color="#000000" meeting="false" start="2022-09-08" duration="3" complete="0" thirdDate="2022-08-31" thirdDate-constraint="0" expand="true"/>
         <task id="3" name="Implementar pop-up de errores" color="#ff9900" meeting="false" start="2022-08-31" duration="3" complete="0" thirdDate="2022-08-31" thirdDate-constraint="0" priority="0" expand="true">
             <depend id="5" type="2" difference="0" hardness="Strong"/>
         </task>
@@ -52,7 +52,9 @@
         <task id="7" name="Terminar los test" color="#009999" meeting="false" start="2022-09-02" duration="3" complete="0" thirdDate="2022-08-31" thirdDate-constraint="0" priority="4" expand="true">
             <depend id="8" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="8" name="Crear seed para cargar la db." color="#8cb6ce" meeting="false" start="2022-09-07" duration="1" complete="0" thirdDate="2022-08-31" thirdDate-constraint="0" expand="true"/>
+        <task id="8" name="Crear seed para cargar la db." color="#8cb6ce" meeting="false" start="2022-09-07" duration="1" complete="0" thirdDate="2022-08-31" thirdDate-constraint="0" expand="true">
+            <depend id="5" type="2" difference="0" hardness="Strong"/>
+        </task>
         <task id="4" name="Agregar restricciones a la carga de datos de la interfaz" color="#990099" meeting="false" start="2022-08-31" duration="1" complete="100" thirdDate="2022-08-31" thirdDate-constraint="0" priority="2" expand="true"/>
     </tasks>
     <resources>
