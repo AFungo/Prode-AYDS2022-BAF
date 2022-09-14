@@ -11,6 +11,7 @@ class Gambler < ActiveRecord::Base
   #El mail debe ser unico
   validates  :name, uniqueness: true
   validates :Email, uniqueness: true
+  validates :Total_score, comparison: {greater_than: -1}
   
   def password
     @password ||= Password.new(password_digest)
@@ -23,7 +24,7 @@ class Gambler < ActiveRecord::Base
   end
 
   #Crear una prediccion 
-  def create_prediction=(match,t1Goals,t2Goals)
+  def create_prediction(match,t1Goals,t2Goals)
     Prediction.new(team1_goals: t1Goals, team2_goals: t2Goals, match: match, gambler: self) 
   end
 
