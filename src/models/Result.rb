@@ -5,16 +5,16 @@ class Result < ActiveRecord::Base
     belongs_to :match
     has_many :prediction
     
-    validates :match, uniqueness: true
+    validates :match, uniqueness: true, presence: true
     validates :team1_goals, presence: true
     validates :team2_goals,  presence: true
     validates :team1_goals, comparison: {greater_than: -1}
     validates :team2_goals, comparison: {greater_than: -1}
 
 
-    def calculatePoints(mat)
-		t1GoalsP = mat.team1_goals
-		t2GoalsP = mat.team2_goals
+    def calculatePoints(prediction)
+		t1GoalsP = prediction.team1_goals
+		t2GoalsP = prediction.team2_goals
 
 		t1GoalsR = self.team1_goals
 		t2GoalsR = self.team2_goals
