@@ -9,17 +9,17 @@ describe '#Result' do
    
         it 'should return false, no match associated' do
             result = Result.new(team1_goals: 1, team2_goals: 0)
-            expect(result.save).to be false
+            expect(result.valid?).to be false
         end
    
         it 'should return false, no team1_goals' do
             result = Result.new(match: match, team2_goals: 0)
-            expect(result.save).to be false
+            expect(result.valid?).to be false
         end
    
         it 'should return true' do
             result = Result.new(match: match, team1_goals: 1, team2_goals: 0)
-            expect(result.save).to be true
+            expect(result.valid?).to be true
         end
     end
 
@@ -30,10 +30,10 @@ describe '#Result' do
         
         describe 'When prediction succeed' do
             it 'should return 3' do
-                prediction.save
+                prediction.valid?
                 result = Result.create(match: match, team1_goals: 1, team2_goals: 0) 
                 result.change_score
-                user = Gambler.where(user).take
+                user = Gambler.where(name: 'G1').take
                 expect(user.Total_score).to eq(3)
             end
         end
