@@ -144,6 +144,7 @@ class App < Sinatra::Application
     logger.info session[:gambler_id]
     session.clear
     logger.info session[:gambler_id]
+    flash[:notice] = "Hasta luego."
     redirect to "/"
   end
 
@@ -162,14 +163,23 @@ class App < Sinatra::Application
     cant = gambler.prediction.size
     for index in 0..size-1 do
       logger.info size
-      prediction = Prediction.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'], team2_goals: json['p'][index]['team2_goals'])
-      prediction.gambler = gambler
-      logger.info prediction
-      gambler.prediction << prediction
-      prediction.save
-      gambler.save  
+      if json['p'][index]['team1_goals'] != "" && json['p'][index]['team2_goals'] != ""
+        prediction = Prediction.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'], team2_goals: json['p'][index]['team2_goals'])
+        prediction.gambler = gambler
+        logger.info prediction
+        gambler.prediction << prediction
+        prediction.save
+        gambler.save  
+      end
     end
-    redirect to "/score"
+    if cant == gambler.prediction.size
+      flash[:alert] = "No se realizo ninguna prediccion."
+      redirect to "/score"
+    else
+      cantPred = gambler.prediction.size - cant
+      flash[:notice] = "Se realizaron #{cantPred} predicciones"
+      redirect to "/score"
+    end
   end
 
   get '/addResult' do

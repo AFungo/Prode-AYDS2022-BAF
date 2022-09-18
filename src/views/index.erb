@@ -13,6 +13,21 @@
   </head>
 
   <body>
+  
+  <% flash.keys.each do |type| %>
+    <% if type == :alert %>
+      <div class="popup">
+        <h4> <%= flash[type] %> </h4>
+      </div>
+    <% end %>
+
+    <% if type == :notice %>
+      <div class="popupn">
+        <h4> <%= flash[type] %> </h4>
+      </div>
+    <% end %>
+
+  <% end %>
 
     <div class="presentation">
       <h2>Vive más el mundial apostando por los <br>

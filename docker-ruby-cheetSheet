@@ -69,8 +69,8 @@ crear datos db:
 	g.save
 
 	// Admin
-	g = Gambler.create(name: 'marcos', Email: 'asc@gmailcom' , Admin: true)
-	g.password=('123')
+	g = Gambler.create(name: 'elnoba', Email: 'asc@gmailcom' , Admin: true)
+	g.password=('abcd')
 	g.save	
 
 	p = Prediction.create(match: match, gambler: g, team1_goals: 1, team2_goals: 0)
