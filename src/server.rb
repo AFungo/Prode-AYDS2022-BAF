@@ -159,6 +159,7 @@ class App < Sinatra::Application
     json = request.params
     param = json['p']
     size = param.size
+    cant = gambler.prediction.size
     for index in 0..size-1 do
       logger.info size
       prediction = Prediction.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'], team2_goals: json['p'][index]['team2_goals'])
