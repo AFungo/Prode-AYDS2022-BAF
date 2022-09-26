@@ -59,7 +59,7 @@ class Result < ActiveRecord::Base
        
     end
 
-    def statistics (gambler)
+    def statistics ()
         
         # PROBLEMA:
         #¿Como traer la prediccion y el resultado del partido correspondiente de un cierto usuario?
@@ -77,8 +77,8 @@ class Result < ActiveRecord::Base
             t1GoalsP = predicciones_usuario.team1_goals #Goles equipo 1 segun prediccion
             t2GoalsP = predicciones_usuario.team2_goals #Goles equipo 2 segun prediccion
           
-            t1GoalsR = resultados.team1_goals #Goles equipo 1 segun resultados
-            t2GoalsR = resultados.team2_goals #Goles equipo 2 segun resultados 
+            t1GoalsR = r.team1_goals #Goles equipo 1 segun resultados
+            t2GoalsR = r.team2_goals #Goles equipo 2 segun resultados 
           
             #Si la cantidad de goles coincide, se suma un acierto
             if t1GoalsP == t1GoalsR && t2GoalsP == t2GoalsR
@@ -86,7 +86,10 @@ class Result < ActiveRecord::Base
             end
         end
 
-        gambler.Statistical_data = cant_aciertos / cant_predicciones
+        if cant_predicciones == 0 
+            gambler.Statistical_data = 0
+        else
+            gambler.Statistical_data = (cant_aciertos / cant_predicciones) *100
         
     end
 
