@@ -28,7 +28,7 @@ class Gambler < ActiveRecord::Base
     Prediction.new(team1_goals: t1Goals, team2_goals: t2Goals, match: match, gambler: self) 
   end
 
-  end
+end
 
 
 
