@@ -1,0 +1,35 @@
+
+<% flash.keys.each do |type| %>
+    <% if type == :alert %>
+      <div class="popup">
+        <h4> <%= flash[type] %> </h4>
+      </div>
+    <% end %>
+
+    <% if type == :notice %>
+      <div class="popupn">
+        <h4> <%= flash[type] %> </h4>
+      </div>
+    <% end %>
+
+  <% end %>
+
+
+
+
+
+<div class="fondo"> 
+<div class="login">
+<div class="login-triangle"></div>
+    <h2 class="login-header">Cambiar Contraseña</h2>
+
+    <form class="login-container" action="/editUser" method="post">
+        <input type="password" name="currentPassword" placeholder="Contraseña actual" />
+        <input type="password" name="newPassword" placeholder="Nueva contraseña" />      
+        <input type="password" name="newPasswordTwo" placeholder="Repite nueva contraseña" />
+        
+        <input type="submit" name="button" value="Confirmar" />
+    </form>
+
+</div>
+</div>

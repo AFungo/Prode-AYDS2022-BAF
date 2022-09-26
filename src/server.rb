@@ -197,6 +197,33 @@ class App < Sinatra::Application
     erb :addTeam
   end
 
+  get '/editUser' do
+    erb :editUser, :layout => :layout
+  end
+
+  post '/editUser' do
+    gambler = @current_user
+    json = request.params
+    logger.info json
+    logger.info gambler
+    if  BCrypt::Password.new(gambler.password) == json['currentPassword']
+      if json['newPassword'] == json['newPasswordTwo']
+        gambler.password = (json['newPassword'])
+        gambler.save
+        session.clear
+        flash[:notice] = "Contraseña cambiada con exito."
+        redirect to "/"
+      else
+        flash[:alert] = "Las contraseñas no coinciden."
+        redirect to "/editUser"
+      end
+    else
+      flash[:alert] = "Contraseña Incorrecta"
+      redirect to '/editUser'
+    end
+  
+  end
+
   post '/addTeam' do 
     json = request.params
     t1 = Team.new
