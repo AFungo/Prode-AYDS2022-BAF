@@ -8,6 +8,18 @@ class Prediction < ActiveRecord::Base
 	validates :team1_goals, comparison: {greater_than: -1}
 	validates :team2_goals, comparison: {greater_than: -1}
 
+	def winner()
+        if team1_goals > team2_goals
+            match.local
+        else 
+            if team2_goals > team1_goals
+              match.visitor
+            else
+                null
+            end            
+        end
+    end
+
 end
 
 

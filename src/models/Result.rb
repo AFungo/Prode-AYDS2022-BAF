@@ -19,13 +19,33 @@ class Result < ActiveRecord::Base
 		t1GoalsR = self.team1_goals
 		t2GoalsR = self.team2_goals
 
-		#Si la prediccion fue igual al resultado, son 3 puntos, sino 0
-		if t1GoalsP == t1GoalsR && t2GoalsP == t2GoalsR 
-			3
-		else
-			0
-		end 
-	end
+        totalPoints = 0
+
+		#Si la prediccion fue igual al resultado, son 2 puntos, sino 0
+        if winner().name == prediction.winner().name
+			totalPoints += 2
+        end
+		if team1_goals == prediction.team1_goals
+			totalPoints += 1
+        end
+        if team2_goals == prediction.team2_goals
+            totalPoints += 1
+        end 
+        totalPoints
+    end
+
+    def winner()
+        if team1_goals > team2_goals
+            match.local
+        else 
+            if team2_goals > team1_goals
+              match.visitor
+            else
+                null
+            end            
+        end
+    end
+
 
     def change_score
         pred = Prediction.where(match: self.match)
