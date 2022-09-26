@@ -86,7 +86,7 @@ class Result < ActiveRecord::Base
             end
         end
 
-        gambler.Statistics = cant_aciertos / cant_predicciones
+        gambler.Statistical_data = cant_aciertos / cant_predicciones
         
     end
 

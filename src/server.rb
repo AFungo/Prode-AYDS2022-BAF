@@ -131,7 +131,7 @@ class App < Sinatra::Application
       g1.password=(json['password'])
       g1.Email = json['email']
       g1.Total_score = 0
-      g1.Statistics = 0
+      g1.Statistical_data = 0
       g1.save
       flash[:notice] = "Gracias por registrarte!!!"
       redirect to "/login"

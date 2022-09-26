@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_201607) do
     t.string "name"
     t.string "Email"
     t.integer "Total_score", default: 0
-    t.float "Statistics", default : 0
+    t.float "Statistical_data", default : 0
     t.integer "predictions_id"
     t.boolean "Admin", default: false
     t.datetime "created_at", null: false
@@ -39,7 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_201607) do
     t.integer "prediction_id"
     t.integer "result_id"
     t.integer "total_points"
-    t.float "statistics"
+    t.float "statistical_data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["prediction_id"], name: "index_points_on_prediction_id"
