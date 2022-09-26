@@ -20,7 +20,8 @@ Migraciones ::
 
 utils ::
 
-	$ sudo docker-compose exec app bundle exec irb -I. -r server.rb // hace interprete con nuesto server
+	$ sudo docker-compose exec app bundle exec irb -I. -r server.rb
+	 // hace interprete con nuesto server
 
 
 notas ::
@@ -36,6 +37,7 @@ test ::
 	
 	sudo docker-compose exec app bundle exec rspec //CORRER LOS TEST
 
+	sudo docker-compose exec app bundle exec rake db:drop APP_ENV=test, db:create APP_ENV=test, db:migrate APP_ENV=test;sudo docker-compose exec app bundle exec rspec;
 	
 	puts(valid_match.errors.inspect) // ver errores de pq es invalido el test va en el test
 crear datos db:
@@ -64,7 +66,7 @@ crear datos db:
 	g = Gambler.create(name: 'SoyUna', lastname: 'Prueba', Email: 'pru@gmailcom')
 	g.password=('abc')
 	g.save
-	g = Gambler.create(name: 'George', lastname: 'jorge', Email: 'gj@gmailcom')
+	g = Gambler.create(name: 'George1', Email: 'g1j@gmailcom')
 	g.password=('abc')
 	g.save
 
