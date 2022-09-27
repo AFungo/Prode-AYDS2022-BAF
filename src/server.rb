@@ -256,8 +256,12 @@ class App < Sinatra::Application
       logger.info json['p'][index]['id']
       result = Result.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'], team2_goals: json['p'][index]['team2_goals'])
       result.save
-      result.change_score  
+      result.change_score
     end
+
+    
+
+
     redirect to '/admin'
   end
 
@@ -273,6 +277,10 @@ class App < Sinatra::Application
 
   get '/score' do
     @gamblers = Gambler.order(Total_score: :desc)
+    @gamblers.each do |g|
+      g.statistics()
+      g.save
+    end
     erb :score
   end
 
