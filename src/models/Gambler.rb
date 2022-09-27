@@ -28,6 +28,44 @@ class Gambler < ActiveRecord::Base
     Prediction.new(team1_goals: t1Goals, team2_goals: t2Goals, match: match, gambler: self) 
   end
 
+  def statistics()
+        
+    # PROBLEMA:
+    #¿Como traer la prediccion y el resultado del partido correspondiente de un cierto usuario?
+
+    cant_aciertos = 0
+
+    #Todas las predicciones de un cierto usuario
+    predicciones_usuario = self.prediction
+    cant_predicciones = 0
+
+    #Resultados de los partidos por los que aposto
+    #resultados = Results.where(prediction_id: gambler.prediction_id)
+    
+    predicciones_usuario.each do |p|
+        
+      r = Result.where(match_id: p.match_id).first()
+      if(r != nil)
+        t1GoalsP = p.team1_goals #Goles equipo 1 segun prediccion
+        t2GoalsP = p.team2_goals #Goles equipo 2 segun prediccion
+        
+
+        t1GoalsR = r.team1_goals #Goles equipo 1 segun resultados
+        t2GoalsR = r.team2_goals #Goles equipo 2 segun resultados 
+        
+        #Si la cantidad de goles coincide, se suma un acierto
+        if t1GoalsP == t1GoalsR && t2GoalsP == t2GoalsR
+            cant_aciertos = cant_aciertos + 1
+        end
+        cant_predicciones += 1
+      end
+    end
+    if(cant_predicciones != 0)
+       self.Statistical_data = (cant_aciertos * 100) / cant_predicciones
+    end
+end
+
+
 end
 
 

@@ -55,39 +55,8 @@ class Result < ActiveRecord::Base
             g1 = p.gambler
             g1.Total_score = g1.Total_score + points
             g1.save
-        end
-       
+        end       
     end
 
-    def statistics (gambler)
-        
-        # PROBLEMA:
-        #¿Como traer la prediccion y el resultado del partido correspondiente de un cierto usuario?
-
-        cant_aciertos = 0
-
-        #Todas las predicciones de un cierto usuario
-        predicciones_usuario = gambler.prediction
-        cant_predicciones = gambler.prediction.size
-
-        #Resultados de los partidos por los que aposto
-        resultados = Results.where(prediction_id: gambler.prediction_id)
-        
-        resultados.each do |r|
-            t1GoalsP = predicciones_usuario.team1_goals #Goles equipo 1 segun prediccion
-            t2GoalsP = predicciones_usuario.team2_goals #Goles equipo 2 segun prediccion
-          
-            t1GoalsR = resultados.team1_goals #Goles equipo 1 segun resultados
-            t2GoalsR = resultados.team2_goals #Goles equipo 2 segun resultados 
-          
-            #Si la cantidad de goles coincide, se suma un acierto
-            if t1GoalsP == t1GoalsR && t2GoalsP == t2GoalsR
-                cant_aciertos = cant_aciertos + 1
-            end
-        end
-
-        gambler.Statistical_data = cant_aciertos / cant_predicciones
-        
-    end
-
+    
 end
