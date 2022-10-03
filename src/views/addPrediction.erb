@@ -1,10 +1,19 @@
+
+
 <h1 class="titulo">PREDECIR RESULTADOS</h1>
 
   <% if @error %>
       <div class="error">Prediction failed.</div>
   <% end %>
 
-  <div class="prediction">
+  <nav> <!-- menu de navegacion -->
+  <ul>
+    <li><a href="http://localhost:4567/predictions">MIS PREDICCIONES</a></li>
+    <li><a href="http://localhost:4567">INICIO</a></li>
+  </ul>
+  </nav> 
+
+  <div class="prediction" >
     <div class="prediction-container">
       <h1 class="prediction-header">Haz una predicción para cada partido</h1>
 
@@ -36,20 +45,3 @@
   </div>
   </br>
 
-  <div class="navegacion">
-
-    <form>
-      <a href="http://localhost:4567/predictions">
-      <input type="button" value="MIS PREDICCIONES">
-      </a>
-    </form>
-    </br>
-
-    <form>
-      <a href="http://localhost:4567">
-      <input type="button" value="INICIO">
-      </a>
-    </form>
-    </br> 
-          
-  </div>
