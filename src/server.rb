@@ -2,40 +2,34 @@ require 'bundler/setup'
 require 'sinatra/base'
 require 'sinatra/flash'
 
-require 'sinatra/reloader' if Sinatra::Base.environment == :development  
+require 'sinatra/reloader' if Sinatra::Base.environment == :development
 
-require "sinatra/activerecord"
+require 'sinatra/activerecord'
 
 require 'logger'
 
 require_relative 'models/init'
 
 class App < Sinatra::Application
-  
   before do
     if session[:gambler_id]
       admin = Gambler.find_by(id: session[:gambler_id]).Admin
       @current_user = Gambler.find_by(id: session[:gambler_id])
-      admin_pages = ["/addResult","/addMatch", "/addTeam", "/admin"]
-    
-      if !admin and admin_pages.include?(request.path_info)
-        redirect '/matches'
-      end
-  
-    else
-      public_pages = ["/", "/login",'/signup']#sacar admin
+      admin_pages = ['/addResult', '/addMatch', '/addTeam', '/admin']
 
-      if !public_pages.include?(request.path_info)
-        redirect '/login'
-      end
+      redirect '/matches' if !admin && admin_pages.include?(request.path_info)
+
+    else
+      public_pages = ['/', '/login', '/signup'] # sacar admin
+
+      redirect '/login' unless public_pages.include?(request.path_info)
     end
-    
   end
 
   configure :development do
     set :sessions, true
     set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
-    set :views          , File.expand_path('../views', __FILE__)
+    set :views, File.expand_path('../views', __FILE__)
     set :public_folder, 'public'
     register Sinatra::Reloader
     after_reload do
@@ -43,34 +37,30 @@ class App < Sinatra::Application
     end
     enable :logging
     enable :sessions
-    
-    
+
     logger = Logger.new(STDOUT)
     logger.level = Logger::DEBUG if development?
     set :logger, logger
+  end
 
-    end
-
-  def initialize(app = nil)
+  def initialize(_app = nil)
     super()
   end
 
-
   get '/matches' do
-    
     @partidos = Match.all
-    erb :matches        
+    erb :matches
   end
-  
+
   get '/admin' do
     erb :admin
   end
-  
+
   get '/prueba' do
     t1 = Team.new
-    t1.name = "Irlana"
+    t1.name = 'Irlana'
     t2 = Team.new
-    t2.name = "Gales"
+    t2.name = 'Gales'
     t1.save
     t2.save
     m1 = Match.new
@@ -82,10 +72,9 @@ class App < Sinatra::Application
     r1.match = m1
     r1.team1_goals = 3
     r1.team2_goals = 4
-    #r1.save
-    "Aguante boca"
+    # r1.save
+    'Aguante boca'
   end
-
 
   get '/' do
     @log = !!session[:gambler_id]
@@ -93,32 +82,28 @@ class App < Sinatra::Application
   end
 
   get '/login' do
-    if !!session[:gambler_id]
-      redirect "/"
-    end
-    erb :login, :layout => :layout
+    redirect '/' if !!session[:gambler_id]
+    erb :login, layout: :layout
   end
 
   post '/login' do
-    json = request.params 
+    json = request.params
     logger.info json
     user = Gambler.find_by(name: json['username'])
     logger.info 'string'
     logger.info user.inspect
     if user && user.password == json['password']
       session[:gambler_id] = user.id
-      flash[:notice] = "Bienvenido."
-      redirect to "/matches"
+      flash[:notice] = 'Bienvenido.'
+      redirect to '/'
     else
-      flash[:alert] = "Contraseña o usuario incorrectos."
+      flash[:alert] = 'Contraseña o usuario incorrectos.'
       redirect to :login
     end
   end
 
   get '/signup' do
-    if !!session[:gambler_id]
-      redirect "/"
-    end
+    redirect '/' if !!session[:gambler_id]
     erb :signup
   end
 
@@ -128,16 +113,16 @@ class App < Sinatra::Application
     if json['password'] == json['repeatpassword']
       g1 = Gambler.new
       g1.name = json['username']
-      g1.password=(json['password'])
+      g1.password = (json['password'])
       g1.Email = json['email']
       g1.Total_score = 0
       g1.Statistical_data = 0
       g1.save
-      flash[:notice] = "Gracias por registrarte!!!"
-      redirect to "/login"
+      flash[:notice] = 'Gracias por registrarte!!!'
+      redirect to '/login'
     else
-      flash[:alert] = "Las contraseñas no coinciden"
-      redirect to "/signup"
+      flash[:alert] = 'Las contraseñas no coinciden'
+      redirect to '/signup'
     end
   end
 
@@ -145,8 +130,8 @@ class App < Sinatra::Application
     logger.info session[:gambler_id]
     session.clear
     logger.info session[:gambler_id]
-    flash[:notice] = "Hasta luego."
-    redirect to "/"
+    flash[:notice] = 'Hasta luego.'
+    redirect to '/'
   end
 
   get '/addPrediction' do
@@ -162,24 +147,23 @@ class App < Sinatra::Application
     param = json['p']
     size = param.size
     cant = gambler.prediction.size
-    for index in 0..size-1 do
+    for index in 0..size - 1 do
       logger.info size
-      if json['p'][index]['team1_goals'] != "" && json['p'][index]['team2_goals'] != ""
-        prediction = Prediction.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'], team2_goals: json['p'][index]['team2_goals'])
-        prediction.gambler = gambler
-        logger.info prediction
-        gambler.prediction << prediction
-        prediction.save
-        gambler.save  
-      end
+      next unless json['p'][index]['team1_goals'] != '' && json['p'][index]['team2_goals'] != ''
+      prediction = Prediction.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'], team2_goals: json['p'][index]['team2_goals'])
+      prediction.gambler = gambler
+      logger.info prediction
+      gambler.prediction << prediction
+      prediction.save
+      gambler.save
     end
     if cant == gambler.prediction.size
-      flash[:alert] = "No se realizo ninguna prediccion."
-      redirect to "/score"
+      flash[:alert] = 'No se realizo ninguna prediccion.'
+      redirect to '/score'
     else
       cantPred = gambler.prediction.size - cant
       flash[:notice] = "Se realizaron #{cantPred} predicciones"
-      redirect to "/score"
+      redirect to '/score'
     end
   end
 
@@ -199,7 +183,7 @@ class App < Sinatra::Application
   end
 
   get '/editUser' do
-    erb :editUser, :layout => :layout
+    erb :editUser, layout: :layout
   end
 
   post '/editUser' do
@@ -207,25 +191,24 @@ class App < Sinatra::Application
     json = request.params
     logger.info json
     logger.info gambler
-    if  BCrypt::Password.new(gambler.password) == json['currentPassword']
+    if BCrypt::Password.new(gambler.password) == json['currentPassword']
       if json['newPassword'] == json['newPasswordTwo']
         gambler.password = (json['newPassword'])
         gambler.save
         session.clear
-        flash[:notice] = "Contraseña cambiada con exito."
-        redirect to "/"
+        flash[:notice] = 'Contraseña cambiada con exito.'
+        redirect to '/'
       else
-        flash[:alert] = "Las contraseñas no coinciden."
-        redirect to "/editUser"
+        flash[:alert] = 'Las contraseñas no coinciden.'
+        redirect to '/editUser'
       end
     else
-      flash[:alert] = "Contraseña Incorrecta"
+      flash[:alert] = 'Contraseña Incorrecta'
       redirect to '/editUser'
     end
-  
   end
 
-  post '/addTeam' do 
+  post '/addTeam' do
     json = request.params
     t1 = Team.new
     t1.name = json['Team_name']
@@ -247,19 +230,16 @@ class App < Sinatra::Application
     m1.save
     redirect to '/admin'
   end
-  
+
   post '/addResult' do
     json = request.params
     param = json['p']
     size = param.size
-    for index in 0..size-1 do
+    for index in 0..size - 1 do
       logger.info json['p'][index]['id']
       result = Result.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'], team2_goals: json['p'][index]['team2_goals'])
       result.save
     end
-
-    
-
 
     redirect to '/admin'
   end
@@ -277,7 +257,7 @@ class App < Sinatra::Application
   get '/score' do
     @gamblers = Gambler.order(Total_score: :desc)
     @gamblers.each do |g|
-      g.statistics()
+      g.statistics
       g.save
     end
     erb :score
