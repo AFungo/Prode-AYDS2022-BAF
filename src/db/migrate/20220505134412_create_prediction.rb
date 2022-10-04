@@ -8,6 +8,6 @@ class CreatePrediction < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
-    add_index :predictions, [:gambler, :match]
+    add_index :predictions, %i[gambler match]
   end
 end

@@ -1,6 +1,6 @@
 ruby '2.7.5'
 
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 github 'sinatra/sinatra' do
   gem 'sinatra'
@@ -9,15 +9,13 @@ end
 
 gem 'multi_json'
 
-gem 'sinatra-activerecord'
-gem 'sqlite3'
-gem 'rake'
 gem 'bcrypt'
-gem 'sinatra-flash'
+gem 'rake'
 gem 'rubocop'
+gem 'sinatra-activerecord'
+gem 'sinatra-flash'
+gem 'sqlite3'
 
 group :test do
   gem 'rspec'
 end
-
-gem 'rubocop'
