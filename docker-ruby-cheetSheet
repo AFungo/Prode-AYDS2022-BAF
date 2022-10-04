@@ -84,7 +84,7 @@ crear datos db:
 
 	//Cargar la semilla ::
 	
-	bash load_seed_sh
+	bash load_seed.sh
 
 
 
