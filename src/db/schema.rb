@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_201607) do
     t.string "name"
     t.string "Email"
     t.integer "Total_score", default: 0
-    t.float "Statistical_data", default : 0
+    t.float "Statistical_data", default: 0.0
     t.integer "predictions_id"
     t.boolean "Admin", default: false
     t.datetime "created_at", null: false
@@ -33,17 +33,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_201607) do
     t.datetime "updated_at", null: false
     t.index ["local_id"], name: "index_matches_on_local_id"
     t.index ["visitor_id"], name: "index_matches_on_visitor_id"
-  end
-
-  create_table "points", force: :cascade do |t|
-    t.integer "prediction_id"
-    t.integer "result_id"
-    t.integer "total_points"
-    t.float "statistical_data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["prediction_id"], name: "index_points_on_prediction_id"
-    t.index ["result_id"], name: "index_points_on_result_id"
   end
 
   create_table "predictions", force: :cascade do |t|

@@ -13,10 +13,17 @@
       <% end %>
   <% end %>
 
-    <div class="table">
-      <table>
+    
       <h1 class="titulo">PARTIDOS</h1>
 
+      <nav> <!-- menu de navegacion -->
+        <ul>
+          <li><a href="http://localhost:4567/results">RESULTADOS</a></li>
+          <li><a href="http://localhost:4567">INICIO</a></li>
+        </ul> 
+      </nav>
+      <div class="table">
+      <table>
           <tr>
             <th>Equipo 1</th>
             <th>Equipo 2</th>
@@ -34,23 +41,6 @@
           <% end %>
 
       </table>
-    </div>
-    
-    <div class="navegacion">
-    
-      <form>
-        <a href="http://localhost:4567/results">
-        <input type="button" value="RESULTADOS">
-        </a>
-      </form>
-      </br>
-              
-      <form>
-        <a href="http://localhost:4567/">
-        <input type="button" value="INICIO">
-        </a>
-      </form>
-      
     </div>
   </body>
 </html>

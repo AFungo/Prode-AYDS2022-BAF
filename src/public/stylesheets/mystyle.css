@@ -30,7 +30,7 @@ body {
     background-repeat: repeat-y;
     font-family: 'Open Sans', sans-serif;
     display:flex;
-}
+  }
 
 .welcome {
   background:  #3bd387;
@@ -41,6 +41,11 @@ body {
   text-align: center;
   text-transform: uppercase;
   color: #fff;
+}
+
+.nombre {
+  font-size:large;
+  color:#fff;
 }
 .popup {
   background:red ;
@@ -67,6 +72,7 @@ body {
   width: 400px;
   margin: 16px auto;
   font-size: 16px;
+  margin-top: 0px;
 }
 
 
@@ -195,7 +201,7 @@ table {
   font-family: 'Open Sans', sans-serif;
   font-weight:bolder;
   padding: 12px;
-  margin-bottom: 40px;
+  margin: 0px;
 }
 
 .table th {
@@ -225,7 +231,7 @@ tr {
   padding: 8px;
   }
 
-  
+
 .navegacion input {
   box-sizing: border-box;
   display: block;
@@ -272,6 +278,10 @@ tr {
   padding: 18px;
 }
 
+.prediction-container{
+  width:max-content;
+}
+
 .prediction-header{
   background: #3bd387;
   padding: 20px;
@@ -281,4 +291,30 @@ tr {
   color: #fff;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+/* menu de navegacion */
+ul{
+  list-style-type: none;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  background:#02723a;
+  overflow: hidden;
+  border-collapse: collapse;
+}
+
+li {
+  float: left;
+}
+
+li a{
+  display: block;
+  color: #fff;
+  text-align: center;
+  padding: 16px 16px;
+  text-decoration: none;
+}
+li a:hover{
+  background-color: #fff;
+  color:#555;
 }

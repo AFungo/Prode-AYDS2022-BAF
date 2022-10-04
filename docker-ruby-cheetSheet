@@ -92,8 +92,9 @@ crear datos db:
 	p = Prediction.create(match: match, gambler: g, team1_goals: 1, team2_goals: 0)
 	r = Result.create(match: match, team1_goals: 0, team2_goals: 0)
 
-
-
+	//Cargar la semilla ::
+	
+	bash load_seed_sh
 
 
 
