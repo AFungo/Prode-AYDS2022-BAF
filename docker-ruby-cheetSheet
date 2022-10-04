@@ -35,10 +35,20 @@ test ::
 	sudo docker-compose exec app bundle exec rake db:create APP_ENV=test
 	sudo docker-compose exec app bundle exec rake db:migrate APP_ENV=test
 	
+	sudo docker-compose exec app bundle exec rake db:drop; sudo docker-compose exec app bundle exec rake db:create; sudo docker-compose exec app bundle exec rake db:migrate
+
+
+
 	sudo docker-compose exec app bundle exec rspec //CORRER LOS TEST
 
 	sudo docker-compose exec app bundle exec rake db:drop APP_ENV=test, db:create APP_ENV=test, db:migrate APP_ENV=test;sudo docker-compose exec app bundle exec rspec;
 	
+	bash run_test_suite.sh
+seed :: 
+	bash load_seed.sh
+
+
+
 	puts(valid_match.errors.inspect) // ver errores de pq es invalido el test va en el test
 crear datos db:
 	team1 = Team.create(name: 'Argentina')
