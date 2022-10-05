@@ -12,16 +12,10 @@ class Result < ActiveRecord::Base
   validates :team2_goals, comparison: { greater_than: -1 }
 
   def calculatePoints(prediction)
-    t1GoalsP = prediction.team1_goals
-    t2GoalsP = prediction.team2_goals
-
-    t1GoalsR = team1_goals
-    t2GoalsR = team2_goals
-
     totalPoints = 0
 
     # Si la prediccion fue igual al resultado, son 2 puntos, sino 0
-    totalPoints += 2 if winner.name == prediction.winner.name
+    totalPoints += 2 if self.winner == prediction.winner
     totalPoints += 1 if team1_goals == prediction.team1_goals
     totalPoints += 1 if team2_goals == prediction.team2_goals
     totalPoints
@@ -34,7 +28,7 @@ class Result < ActiveRecord::Base
       if team2_goals > team1_goals
         match.visitor
       else
-        null
+        nil
         end
     end
   end

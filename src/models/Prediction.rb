@@ -15,7 +15,7 @@ class Prediction < ActiveRecord::Base
       if team2_goals > team1_goals
         match.visitor
       else
-        null
+        nil
       end
     end
     end
