@@ -1,4 +1,4 @@
-require_relative '../../models/init.rb'
+require_relative '../../models/init'
 
 describe '#Gambler' do
   let(:user) { Gambler.create(name: 'U1', Email: 'U@gmail.com') }

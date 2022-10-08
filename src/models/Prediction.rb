@@ -11,12 +11,8 @@ class Prediction < ActiveRecord::Base
   def winner
     if team1_goals > team2_goals
       match.local
-    else
-      if team2_goals > team1_goals
-        match.visitor
-      else
-        nil
-      end
+    elsif team2_goals > team1_goals
+      match.visitor
     end
-    end
+  end
 end

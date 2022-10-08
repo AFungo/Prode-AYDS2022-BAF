@@ -1,4 +1,4 @@
-require_relative '../../models/init.rb'
+require_relative '../../models/init'
 
 # Test
 describe 'Prediction' do

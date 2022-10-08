@@ -40,6 +40,7 @@ class Gambler < ActiveRecord::Base
     predicciones_usuario.each do |p|
       r = Result.where(match_id: p.match_id).first
       next if r.nil?
+
       t1GoalsP = p.team1_goals # Goles equipo 1 segun prediccion
       t2GoalsP = p.team2_goals # Goles equipo 2 segun prediccion
       t1GoalsR = r.team1_goals # Goles equipo 1 segun resultados
@@ -48,8 +49,6 @@ class Gambler < ActiveRecord::Base
       cant_aciertos += 1 if t1GoalsP == t1GoalsR && t2GoalsP == t2GoalsR
       cant_predicciones += 1
     end
-    if cant_predicciones != 0
-      self.Statistical_data = (cant_aciertos * 100) / cant_predicciones
-    end
+    self.Statistical_data = (cant_aciertos * 100) / cant_predicciones if cant_predicciones != 0
   end
 end

@@ -1,4 +1,4 @@
-require_relative '../../models/init.rb'
+require_relative '../../models/init'
 
 describe '#Result' do
   let(:team_1) { Team.new(name: 'T1') }

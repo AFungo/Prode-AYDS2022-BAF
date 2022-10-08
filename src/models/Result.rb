@@ -15,7 +15,7 @@ class Result < ActiveRecord::Base
     totalPoints = 0
 
     # Si la prediccion fue igual al resultado, son 2 puntos, sino 0
-    totalPoints += 2 if self.winner == prediction.winner
+    totalPoints += 2 if winner == prediction.winner
     totalPoints += 1 if team1_goals == prediction.team1_goals
     totalPoints += 1 if team2_goals == prediction.team2_goals
     totalPoints
@@ -24,12 +24,8 @@ class Result < ActiveRecord::Base
   def winner
     if team1_goals > team2_goals
       match.local
-    else
-      if team2_goals > team1_goals
-        match.visitor
-      else
-        nil
-        end
+    elsif team2_goals > team1_goals
+      match.visitor
     end
   end
 

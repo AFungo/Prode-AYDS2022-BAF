@@ -29,7 +29,7 @@ class App < Sinatra::Application
   configure :development do
     set :sessions, true
     set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
-    set :views, File.expand_path('../views', __FILE__)
+    set :views, File.expand_path('views', __dir__)
     set :public_folder, 'public'
     register Sinatra::Reloader
     after_reload do
@@ -115,8 +115,8 @@ class App < Sinatra::Application
       g1.name = json['username']
       g1.password = (json['password'])
       g1.Email = json['email']
+      g1.Statistical_data = 0.0
       g1.Total_score = 0
-      g1.Statistical_data = 0
       g1.save
       flash[:notice] = 'Gracias por registrarte!!!'
       redirect to '/login'
@@ -150,7 +150,9 @@ class App < Sinatra::Application
     for index in 0..size - 1 do
       logger.info size
       next unless json['p'][index]['team1_goals'] != '' && json['p'][index]['team2_goals'] != ''
-      prediction = Prediction.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'], team2_goals: json['p'][index]['team2_goals'])
+
+      prediction = Prediction.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'],
+                                  team2_goals: json['p'][index]['team2_goals'])
       prediction.gambler = gambler
       logger.info prediction
       gambler.prediction << prediction
@@ -237,7 +239,8 @@ class App < Sinatra::Application
     size = param.size
     for index in 0..size - 1 do
       logger.info json['p'][index]['id']
-      result = Result.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'], team2_goals: json['p'][index]['team2_goals'])
+      result = Result.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'],
+                          team2_goals: json['p'][index]['team2_goals'])
       result.save
       result.change_score
     end
