@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'bundler/setup'
 require 'sinatra/base'
 require 'sinatra/flash'
@@ -10,6 +12,7 @@ require 'logger'
 
 require_relative 'models/init'
 
+# Clase principal que maneja los accesos a cada una de las rutas.
 class App < Sinatra::Application
   before do
     if session[:gambler_id]
@@ -38,7 +41,7 @@ class App < Sinatra::Application
     enable :logging
     enable :sessions
 
-    logger = Logger.new(STDOUT)
+    logger = Logger.new($stdout)
     logger.level = Logger::DEBUG if development?
     set :logger, logger
   end
@@ -77,12 +80,12 @@ class App < Sinatra::Application
   end
 
   get '/' do
-    @log = !!session[:gambler_id]
+    @log = !session[:gambler_id].nil?
     erb :index
   end
 
   get '/login' do
-    redirect '/' if !!session[:gambler_id]
+    redirect '/' unless session[:gambler_id].nil?
     erb :login, layout: :layout
   end
 
@@ -103,12 +106,11 @@ class App < Sinatra::Application
   end
 
   get '/signup' do
-    redirect '/' if !!session[:gambler_id]
+    redirect '/' unless session[:gambler_id].nil?
     erb :signup
   end
 
   post '/signup' do
-    g1 = Gambler.new
     json = request.params
     if json['password'] == json['repeatpassword']
       g1 = Gambler.new
@@ -147,7 +149,7 @@ class App < Sinatra::Application
     param = json['p']
     size = param.size
     cant = gambler.prediction.size
-    for index in 0..size - 1 do
+    (0..size - 1).each do |index|
       logger.info size
       next unless json['p'][index]['team1_goals'] != '' && json['p'][index]['team2_goals'] != ''
 
@@ -161,12 +163,11 @@ class App < Sinatra::Application
     end
     if cant == gambler.prediction.size
       flash[:alert] = 'No se realizo ninguna prediccion.'
-      redirect to '/score'
     else
-      cantPred = gambler.prediction.size - cant
-      flash[:notice] = "Se realizaron #{cantPred} predicciones"
-      redirect to '/score'
+      cant_pred = gambler.prediction.size - cant
+      flash[:notice] = "Se realizaron #{cant_pred} predicciones"
     end
+    redirect to '/score'
   end
 
   get '/addResult' do
@@ -237,7 +238,7 @@ class App < Sinatra::Application
     json = request.params
     param = json['p']
     size = param.size
-    for index in 0..size - 1 do
+    (0..size - 1).each do |index|
       logger.info json['p'][index]['id']
       result = Result.new(match_id: json['p'][index]['id'].to_i, team1_goals: json['p'][index]['team1_goals'],
                           team2_goals: json['p'][index]['team2_goals'])
