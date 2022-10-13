@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require 'active_record'
 
+# Clase que representa a las prediciones que realizan los usuarios.
 class Prediction < ActiveRecord::Base
   # Una prediccion pertenece a un partido y a un jugador
   belongs_to :match

@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require 'active_record'
 require 'date'
+# Clase que representa cada uno de los partidos.
 class Match < ActiveRecord::Base
   belongs_to :local, class_name: 'Team'
   belongs_to :visitor, class_name: 'Team'
@@ -14,7 +17,15 @@ class Match < ActiveRecord::Base
 
   # Dice si dos partidos son iguales.
   # Dos partidos son iguales si juegan los mismo equipos en la misma ronda
+  def eqround(other)
+    (other.round == round)
+  end
+
+  def eqteams(other)
+    ((other.local == local || other.local == visitor) && (other.visitor == visitor || other.visitor == local))
+  end
+
   def equals(other)
-    ((other.local == local || other.local == visitor) && (other.visitor == visitor || other.visitor == local) && (other.round == round))
+    (this.eqteams(other) && this.eqround(other))
   end
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'gambler'
-require_relative 'Match'
-require_relative 'Prediction'
-require_relative 'Team'
-require_relative 'Result'
+require_relative 'match'
+require_relative 'prediction'
+require_relative 'team'
+require_relative 'result'
