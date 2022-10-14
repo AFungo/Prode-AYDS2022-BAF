@@ -1,0 +1,70 @@
+rubocop --only Metrics/AbcSize
+    Offenses:
+
+    models/gambler.rb:34:3: C: Metrics/AbcSize: Assignment Branch Condition size for statistics is too high. [17.46/15]
+    def statistics ...
+    ^^^^^^^^^^^^^^
+
+    25 files inspected, 1 offense detected
+
+
+rubocop --only Metrics/BlockLength
+    Offenses:
+
+    db/schema.rb:13:1: C: Metrics/BlockLength: Block has too many lines. [48/25]
+    ActiveRecord::Schema[7.0].define(version: 2022_05_18_201607) do ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    25 files inspected, 1 offense detected
+
+
+rubocop --only Metrics/BlockNesting
+    Inspecting 25 files
+    .........................
+
+    25 files inspected, no offenses detected
+
+
+rubocop --only Metrics/ClassLength
+    Offenses:
+
+    server.rb:16:1: C: Metrics/ClassLength: Class has too many lines. [232/100]
+    class App < Sinatra::Application ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    25 files inspected, 1 offense detected
+
+
+rubocop --only Metrics/CyclomaticComplexity
+    Inspecting 25 files
+    .........................
+
+    25 files inspected, no offenses detected
+
+
+rubocop --only Metrics/MethodLength
+    Inspecting 25 files
+    .........................
+
+    25 files inspected, no offenses detected
+
+
+rubocop --only Metrics/ModuleLength
+    Inspecting 25 files
+    .........................
+
+    25 files inspected, no offenses detected
+
+
+rubocop --only Metrics/ParameterLists
+    Inspecting 25 files
+    .........................
+
+    25 files inspected, no offenses detected
+
+
+rubocop --only Metrics/PerceivedComplexity
+    Inspecting 25 files
+    .........................
+
+    25 files inspected, no offenses detected
