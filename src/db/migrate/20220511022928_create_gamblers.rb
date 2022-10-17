@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Create gamblers table
 class CreateGamblers < ActiveRecord::Migration[7.0]
   def change
     create_table :gamblers do |t|
