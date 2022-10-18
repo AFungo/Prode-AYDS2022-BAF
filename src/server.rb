@@ -59,26 +59,6 @@ class App < Sinatra::Application
     erb :admin
   end
 
-  get '/prueba' do
-    t1 = Team.new
-    t1.name = 'Irlana'
-    t2 = Team.new
-    t2.name = 'Gales'
-    t1.save
-    t2.save
-    m1 = Match.new
-    m1.local = t1
-    m1.visitor = t2
-    m1.round = 1
-    m1.save
-    r1 = Result.new
-    r1.match = m1
-    r1.team1_goals = 3
-    r1.team2_goals = 4
-    # r1.save
-    'Aguante boca'
-  end
-
   get '/' do
     @log = !session[:gambler_id].nil?
     erb :index

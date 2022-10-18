@@ -1,0 +1,10 @@
+    La mayoria de ofensas que teniamos fueron autocorregidas por rubocop y eran
+mayormente por errores de identacion.
+    Dentro de las ofensas que no eran autocorregibles teniamos los nombres de archivos
+y variables que no estaban en snake_case, las comillas dobles en vez e simples y 
+tambien metodos y longitud de lineas demasiados largos. Para esto ultimo utilizamos
+las tecnicas de refactorizacion vistas en el taller por ejemplo:
+    En los test los metodos eran demasiados largos y utilizamos la tecnica de 
+Extract Method, tambien usamos Rename Method para que queden mas descriptivos y
+Inlane Temp en el metodo change_score de result y el metodo statistics de gambler.
+    Ademas eliminamos algunos metodos y variables que no tenian ningun uso.
