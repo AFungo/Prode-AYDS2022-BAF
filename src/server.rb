@@ -248,6 +248,11 @@ class App < Sinatra::Application
     erb :score
   end
 
+  get '/teams' do
+    @teams = Team.all
+    erb :teams
+  end
+
   get '/results' do
     @results = Result.all
     erb :results
