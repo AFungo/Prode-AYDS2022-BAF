@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Teams</title>
+  </head>
+  <body>
+
+  <% flash.keys.each do |type| %>
+    <% if type == :alert %>
+      <div class="popup">
+        <h4> <%= flash[type] %> </h4>
+      </div>
+    <% end %>
+
+    <% if type == :notice %>
+      <div class="popupn">
+        <h4> <%= flash[type] %> </h4>
+      </div>
+    <% end %>
+    <% end %>
+
+    <nav> <!-- menu de navegacion -->
+  <ul>
+    <li><a href="http://localhost:4567">INICIO</a></li>
+  </ul>
+  </nav> 
+  
+    <h1 class="titulo">EQUIPOS</h1>
+  
+    <div class="table">
+      <table>
+
+        <tr>
+          <th> Nombre </th>
+          <th> Jugados </th>
+          <th> Ganados </th>
+          <th> Empatados </th>
+          <th> Perdidos </th>
+          <th> % Ganados </th>
+        </tr>
+
+        <% @teams.each do |t| %>
+          <tr>
+            <td> <%= t.name %>  </td>
+            <td> <%= t.played %> </td>            
+            <td> <%= t.wins %> </td>
+            <td> <%= t.draws %> </td>            
+            <td> <%= t.lose %> </td>
+            <td> <%= t.win_rate %> % </td>
+          </tr>
+        <% end %>
+
+      </table>
+    </div>
+  </body>
+</html>
